@@ -68,6 +68,8 @@ export default function Project() {
                             height={1080}
                             layout="responsive"
                             objectFit="contain"
+                            placeholder="blur"
+                            blurDataURL={v.img.src}
                           />
                         </div>
                         <div className="flex flex-col w-full h-full px-1 py-1 whitespace-normal">

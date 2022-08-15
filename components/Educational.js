@@ -43,10 +43,10 @@ export default function Educational() {
     <div className="relative mb-5">
           <TextHeader text="Education" />
           <CardHorizontal>
-            {edu.map((v) => {
+            {edu.map((v, i) => {
               return (
                 v.isActive && (
-                  <div className="relative inline-block border-t border-t-red-500">
+                  <div className="relative inline-block border-t border-t-red-500" key={i}>
                     <div className={`absolute h-3 w-3 bg-fuchsia-500  -top-2 -left-0 rounded-full ${v.isCurrent === true ? 'animate-pulse' : ''}`}></div>
                     <div className="relative flex flex-col mt-2 mr-5">
                       <h5 className="text-sm font-semibold">{v.name}</h5>
