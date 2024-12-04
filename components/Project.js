@@ -9,7 +9,7 @@ const initProjects = [
         src: "/assets/images/porto/gpc.webp",
         alt: "apartemen green pramuka",
       },
-      link: "https://greenpramukacityjakarta.id",
+      link: "https://gpc-landing-page-3oi5rc8e0-decade23.vercel.app",
       shorDesc: "marketing",
       isActive: true,
     },
