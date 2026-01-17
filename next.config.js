@@ -1,9 +1,17 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
-  swcMinify: true,
   images: {
-    domains: ["bit.ly"],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'bit.ly',
+      },
+      {
+        protocol: 'https',
+        hostname: 'dedi.asia',
+        pathname: '/assets/images/**',
+      },
+    ],
   },
   async headers() {
     return [
@@ -16,3 +24,4 @@ const nextConfig = {
 };
 
 module.exports = nextConfig;
+

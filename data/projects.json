@@ -1,0 +1,52 @@
+[
+  {
+    "label": "apartemen green pramuka",
+    "img": {
+      "src": "/assets/images/porto/gpc.webp",
+      "alt": "apartemen green pramuka"
+    },
+    "link": "https://gpc-landing-page-3oi5rc8e0-decade23.vercel.app",
+    "shortDesc": "marketing",
+    "isActive": true
+  },
+  {
+    "label": "koki apps website",
+    "img": {
+      "src": "/assets/images/porto/koki.png",
+      "alt": "koki apps"
+    },
+    "link": "https://koki-machiato.vercel.app",
+    "shortDesc": "marketing",
+    "isActive": true
+  },
+  {
+    "label": "koki CMS website",
+    "img": {
+      "src": "/assets/images/porto/koki.png",
+      "alt": "koki CMS website"
+    },
+    "link": "",
+    "shortDesc": "cms",
+    "isActive": true
+  },
+  {
+    "label": "Palembang Kito CMS Website",
+    "img": {
+      "src": "/assets/images/porto/plb_kito.jpeg",
+      "alt": "palembang kito"
+    },
+    "link": "",
+    "shortDesc": "cms",
+    "isActive": true
+  },
+  {
+    "label": "Ellen May CMS Website",
+    "img": {
+      "src": "/assets/images/porto/emi.png",
+      "alt": "ellen may institude"
+    },
+    "link": "",
+    "shortDesc": "cms",
+    "isActive": true
+  }
+]

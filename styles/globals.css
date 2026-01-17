@@ -1,5 +1,329 @@
-@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+    /* Improved Dark Mode Base Styles */
+    :root {
+        --background: 255 255 255;
+        --foreground: 15 23 42;
+        --card: 248 250 252;
+        --card-foreground: 15 23 42;
+        --primary: 217 70 239;
+        --primary-foreground: 255 255 255;
+        --secondary: 241 245 249;
+        --secondary-foreground: 15 23 42;
+        --muted: 241 245 249;
+        --muted-foreground: 100 116 139;
+        --accent: 250 204 21;
+        --accent-foreground: 15 23 42;
+        --border: 226 232 240;
+    }
+
+    .dark {
+        --background: 15 23 42;
+        --foreground: 248 250 252;
+        --card: 30 41 59;
+        --card-foreground: 248 250 252;
+        --primary: 232 121 249;
+        --primary-foreground: 15 23 42;
+        --secondary: 51 65 85;
+        --secondary-foreground: 248 250 252;
+        --muted: 51 65 85;
+        --muted-foreground: 148 163 184;
+        --accent: 253 224 71;
+        --accent-foreground: 15 23 42;
+        --border: 51 65 85;
+    }
+
+    html {
+        @apply scroll-smooth;
+    }
+
+    body {
+        @apply bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 antialiased;
+        font-family: "Raleway", sans-serif;
+        transition:
+            background-color 0.3s ease,
+            color 0.3s ease;
+    }
+
+    /* Improved Text Contrast for Dark Mode */
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        @apply text-slate-900 dark:text-white font-semibold;
+    }
+
+    p {
+        @apply text-slate-700 dark:text-slate-200;
+    }
+
+    /* Links */
+    a {
+        @apply transition-colors duration-200;
+    }
+
+    /* Selection */
+    ::selection {
+        @apply bg-fuchsia-500/30 text-fuchsia-900 dark:text-fuchsia-100;
+    }
+}
+
+@layer components {
+    /* Container improvements */
+    .container-app {
+        @apply w-full max-w-2xl mx-auto px-4 sm:px-6 lg:max-w-4xl xl:max-w-5xl;
+    }
+
+    /* Card Component */
+    .card {
+        @apply bg-white dark:bg-slate-800 rounded-2xl shadow-lg shadow-slate-200/50 dark:shadow-slate-900/50
+           border border-slate-100 dark:border-slate-700
+           transition-all duration-300 hover:shadow-xl hover:scale-[1.02];
+    }
+
+    .card-highlight {
+        @apply bg-gradient-to-br from-fuchsia-50 to-purple-50 dark:from-fuchsia-950/50 dark:to-purple-950/50
+           border-fuchsia-200 dark:border-fuchsia-800;
+    }
+
+    /* Button Styles */
+    .btn {
+        @apply inline-flex items-center justify-center px-4 py-2 rounded-xl font-medium
+           transition-all duration-200 active:scale-95;
+    }
+
+    .btn-primary {
+        @apply bg-fuchsia-500 hover:bg-fuchsia-600 text-white shadow-lg shadow-fuchsia-500/25
+           dark:bg-fuchsia-600 dark:hover:bg-fuchsia-500;
+    }
+
+    .btn-secondary {
+        @apply bg-slate-100 hover:bg-slate-200 text-slate-900
+           dark:bg-slate-700 dark:hover:bg-slate-600 dark:text-white;
+    }
+
+    .btn-ghost {
+        @apply bg-transparent hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300;
+    }
+
+    /* Badge Styles */
+    .badge {
+        @apply inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold;
+    }
+
+    .badge-primary {
+        @apply bg-fuchsia-100 text-fuchsia-700 dark:bg-fuchsia-900/50 dark:text-fuchsia-300;
+    }
+
+    .badge-success {
+        @apply bg-emerald-100 text-emerald-700 dark:bg-emerald-900/50 dark:text-emerald-300;
+    }
+
+    .badge-warning {
+        @apply bg-amber-100 text-amber-700 dark:bg-amber-900/50 dark:text-amber-300;
+    }
+
+    .badge-danger {
+        @apply bg-rose-100 text-rose-700 dark:bg-rose-900/50 dark:text-rose-300;
+    }
+
+    /* Section Header */
+    .section-title {
+        @apply text-lg font-bold tracking-wide text-slate-800 dark:text-white mb-4;
+    }
+
+    /* Glass Effect */
+    .glass {
+        @apply bg-white/80 dark:bg-slate-900/80 backdrop-blur-lg;
+    }
+
+    /* Theme Toggle Button */
+    .theme-toggle {
+        @apply p-2.5 rounded-full bg-slate-100 dark:bg-slate-800
+           hover:bg-slate-200 dark:hover:bg-slate-700
+           text-slate-600 dark:text-slate-300
+           transition-all duration-300 hover:scale-110 active:scale-95
+           shadow-sm hover:shadow-md;
+    }
+
+    /* Navigation styles */
+    .nav-item {
+        @apply flex flex-col items-center justify-center p-2 rounded-xl
+           text-slate-500 dark:text-slate-400
+           hover:text-fuchsia-600 dark:hover:text-fuchsia-400
+           hover:bg-slate-100 dark:hover:bg-slate-800
+           transition-all duration-200;
+    }
+
+    .nav-item-active {
+        @apply text-fuchsia-600 dark:text-fuchsia-400
+           bg-fuchsia-50 dark:bg-fuchsia-950/50;
+    }
+
+    /* Project Card */
+    .project-card {
+        @apply relative bg-white dark:bg-slate-800 rounded-2xl overflow-hidden
+           border border-slate-200 dark:border-slate-700
+           shadow-md hover:shadow-xl transition-all duration-300
+           hover:-translate-y-1;
+    }
+
+    /* Social Media Link */
+    .social-link {
+        @apply flex items-center justify-center w-12 h-12 rounded-full
+           bg-slate-100 dark:bg-slate-800
+           hover:scale-110 hover:shadow-lg
+           transition-all duration-300;
+    }
+
+    /* Activity Card */
+    .activity-card {
+        @apply relative overflow-hidden rounded-2xl p-4
+           bg-gradient-to-r from-fuchsia-100 via-purple-50 to-pink-100
+           dark:from-fuchsia-950/60 dark:via-purple-950/60 dark:to-pink-950/60
+           border border-fuchsia-200 dark:border-fuchsia-800/50;
+    }
+
+    /* Timeline */
+    .timeline-item {
+        @apply relative pl-6 pb-6 border-l-2 border-fuchsia-200 dark:border-fuchsia-800 last:pb-0;
+    }
+
+    .timeline-dot {
+        @apply absolute -left-[9px] top-0 w-4 h-4 rounded-full
+           bg-fuchsia-500 dark:bg-fuchsia-400
+           ring-4 ring-fuchsia-100 dark:ring-fuchsia-900/50;
+    }
+
+    .timeline-dot-pulse {
+        @apply animate-pulse bg-fuchsia-400 dark:bg-fuchsia-300;
+    }
+
+    /* Input styles */
+    .input {
+        @apply w-full px-4 py-3 rounded-xl
+           bg-slate-50 dark:bg-slate-800
+           border border-slate-200 dark:border-slate-700
+           text-slate-900 dark:text-white
+           placeholder:text-slate-400 dark:placeholder:text-slate-500
+           focus:outline-none focus:ring-2 focus:ring-fuchsia-500 focus:border-transparent
+           transition-all duration-200;
+    }
+
+    /* Gradient text */
+    .text-gradient {
+        @apply bg-gradient-to-r from-fuchsia-500 via-purple-500 to-pink-500
+           bg-clip-text text-transparent;
+    }
+
+    /* Header gradient background */
+    .header-gradient {
+        @apply bg-gradient-to-br from-fuchsia-600 via-purple-600 to-indigo-600
+           dark:from-fuchsia-700 dark:via-purple-800 dark:to-indigo-900;
+    }
+}
+
+@layer utilities {
+    /* Hide scrollbar but keep functionality */
+    .scrollbar-hide {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+
+    .scrollbar-hide::-webkit-scrollbar {
+        display: none;
+    }
+
+    /* Custom scrollbar for larger screens */
+    @media (min-width: 768px) {
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-track {
+            @apply bg-slate-100 dark:bg-slate-800 rounded-full;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            @apply bg-slate-300 dark:bg-slate-600 rounded-full hover:bg-slate-400 dark:hover:bg-slate-500;
+        }
+    }
+
+    /* Animation utilities */
+    .animate-fade-in {
+        animation: fadeIn 0.5s ease-out forwards;
+    }
+
+    .animate-slide-up {
+        animation: slideUp 0.5s ease-out forwards;
+    }
+
+    .animate-scale-in {
+        animation: scaleIn 0.3s ease-out forwards;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+
+    @keyframes slideUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes scaleIn {
+        from {
+            opacity: 0;
+            transform: scale(0.9);
+        }
+        to {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+
+    /* Responsive text utilities */
+    .text-responsive-sm {
+        @apply text-sm sm:text-base;
+    }
+
+    .text-responsive-base {
+        @apply text-base sm:text-lg;
+    }
+
+    .text-responsive-lg {
+        @apply text-lg sm:text-xl md:text-2xl;
+    }
+
+    .text-responsive-xl {
+        @apply text-xl sm:text-2xl md:text-3xl;
+    }
+
+    /* Safe area for mobile */
+    .safe-bottom {
+        padding-bottom: env(safe-area-inset-bottom, 1rem);
+    }
+
+    .safe-top {
+        padding-top: env(safe-area-inset-top, 0);
+    }
+}

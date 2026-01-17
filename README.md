@@ -1,34 +1,191 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Dedi Fardiyanto - Portfolio Website
 
-## Getting Started
+A modern, responsive portfolio website built with Next.js 16, React 19, and Tailwind CSS.
 
-First, run the development server:
+## Features
+
+- **Modern Stack**: Next.js 16.1.3 with React 19.0.0
+- **Responsive Design**: Optimized for all screen sizes
+- **Dark Mode**: System-aware dark mode support
+- **Performance**: Optimized images, lazy loading, and caching
+- **SEO**: Structured data, Open Graph, and sitemap
+- **Analytics**: Vercel Analytics integration
+- **Error Handling**: Error boundaries for better UX
+
+## Quick Start
+
+### Prerequisites
+
+- Node.js >= 18.x
+- npm or yarn
+
+### Installation
 
 ```bash
+# Clone the repository
+git clone https://github.com/Decade23/profile.git
+cd profile
+
+# Install dependencies
+npm install
+
+# Run development server
 npm run dev
-# or
-yarn dev
+
+# Build for production
+npm run build
+
+# Start production server
+npm start
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The development server will start at [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## Project Structure
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+```
+├── components/           # React components
+│   ├── layouts/         # Layout components
+│   ├── profile/         # Profile-specific components
+│   ├── ErrorBoundary.js # Error boundary component
+│   ├── Project.js       # Projects showcase
+│   ├── Repo.js          # Repository links
+│   └── Medsos.js       # Social media links
+├── data/               # Static data
+│   ├── projects.json    # Projects data
+│   └── repos.json      # Repository data
+├── pages/              # Next.js pages (Pages Router)
+│   ├── _app.js         # App wrapper
+│   ├── _document.js    # Document wrapper
+│   ├── index.js        # Home page
+│   ├── profile.js      # Profile page
+│   ├── contact.js      # Contact page
+│   ├── history.js      # Work history
+│   └── privacy.js      # Privacy policy
+├── public/             # Static assets
+│   ├── assets/         # Images and media
+│   ├── robots.txt      # SEO robots file
+│   └── favicon.ico    # Site favicon
+├── styles/             # Global styles
+│   └── globals.css     # Tailwind imports
+├── next.config.js      # Next.js configuration
+├── tailwind.config.js  # Tailwind CSS configuration
+└── package.json        # Dependencies and scripts
+```
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## Available Scripts
 
-## Learn More
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm start` - Start production server
+- `npm run lint` - Run ESLint
 
-To learn more about Next.js, take a look at the following resources:
+## Tech Stack
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Framework**: Next.js 16.1.3 (Pages Router)
+- **UI Library**: React 19.0.0
+- **Styling**: Tailwind CSS 3.4.17
+- **Analytics**: Vercel Analytics
+- **Theme**: next-themes
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Deployment
 
-## Deploy on Vercel
+### Vercel (Recommended)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. Push your code to GitHub
+2. Import project in [Vercel](https://vercel.com)
+3. Deploy with default settings
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### Other Platforms
+
+Build the project first:
+
+```bash
+npm run build
+```
+
+Then deploy the `.next` folder and `public` folder.
+
+## Customization
+
+### Update Profile Information
+
+Edit the following files:
+
+- `pages/profile.js` - Personal details
+- `components/layouts/Seo.js` - SEO metadata
+- `pages/home.js` - Main content
+
+### Add/Remove Projects
+
+Edit `data/projects.json`:
+
+```json
+{
+  "label": "Project Name",
+  "img": {
+    "src": "/path/to/image.png",
+    "alt": "Project description"
+  },
+  "link": "https://project-url.com",
+  "shortDesc": "marketing/cms",
+  "isActive": true
+}
+```
+
+### Add/Remove Repositories
+
+Edit `data/repos.json`:
+
+```json
+{
+  "name": "github",
+  "link": "https://github.com/username",
+  "color": "text-github",
+  "path": "SVG path data",
+  "alt": "github",
+  "isActive": true
+}
+```
+
+## SEO Optimization
+
+The site includes:
+
+- Structured data (JSON-LD) for person schema
+- Open Graph tags for social sharing
+- Twitter Card support
+- Dynamic sitemap at `/sitemap.xml`
+- Robots.txt configuration
+
+## Performance Optimization
+
+- Image optimization with Next.js Image component
+- Lazy loading for components
+- CSS optimization with PurgeCSS
+- Static generation where possible
+- Turbopack for faster builds
+
+## Contributing
+
+Contributions are welcome! Please follow these steps:
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Test thoroughly
+5. Submit a pull request
+
+## License
+
+This project is open source and available under the [MIT License](LICENSE).
+
+## Contact
+
+- Email: dedif15@gmail.com
+- Website: [dedi.asia](https://dedi.asia)
+- GitHub: [@Decade23](https://github.com/Decade23)
+
+## Credits
+
+Built with ❤️ using Next.js and Tailwind CSS.
