@@ -1,4 +1,4 @@
-import Head from 'next/head';
+import Head from "next/head";
 
 interface SeoProps {
   title?: string;
@@ -11,7 +11,7 @@ export default function Seo({
   title = "Dedi Fardiyanto",
   description = "Fullstack Developer - Whenever you want to build web or apps, just contact me here",
   image = "https://dedi.asia/assets/images/dedi.png",
-  url = "https://dedi.asia/"
+  url = "https://dedi.asia/",
 }: SeoProps) {
   return (
     <Head>
@@ -32,7 +32,10 @@ export default function Seo({
       <meta property="twitter:description" content={description} />
       <meta property="twitter:image" content={image} />
 
-      <meta name="keywords" content="Dedi Fardiyanto, Fullstack Developer, Web Developer, React, Next.js, JavaScript, Indonesia" />
+      <meta
+        name="keywords"
+        content="Dedi Fardiyanto, Fullstack Developer, Web Developer, React, Next.js, JavaScript, Indonesia"
+      />
       <meta name="author" content="Dedi Fardiyanto" />
 
       <script
@@ -41,21 +44,21 @@ export default function Seo({
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Person",
-            "name": "Dedi Fardiyanto",
-            "jobTitle": "Fullstack Developer",
-            "url": "https://dedi.asia",
-            "image": "https://dedi.asia/assets/images/dedi.png",
-            "email": "dedif15@gmail.com",
-            "worksFor": {
+            name: "Dedi Fardiyanto",
+            jobTitle: "Fullstack Developer",
+            url: "https://dedi.asia",
+            image: "https://dedi.asia/assets/images/dedi.png",
+            email: "dedif15@gmail.com",
+            worksFor: {
               "@type": "Organization",
-              "name": "Adira Finance"
+              name: "Bank Tabungan Negara (BTN)",
             },
-            "sameAs": [
+            sameAs: [
               "https://github.com/Decade23",
               "https://gitlab.com/dante23",
-              "https://bitbucket.org/_dedi"
-            ]
-          })
+              "https://bitbucket.org/_dedi",
+            ],
+          }),
         }}
       />
     </Head>
