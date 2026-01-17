@@ -1,12 +1,13 @@
 # Dedi Fardiyanto - Portfolio Website
 
-A modern, responsive portfolio website built with Next.js 16, React 19, and Tailwind CSS.
+A modern, responsive portfolio website built with Next.js 16, React 19, and Tailwind CSS. Features an AI-powered chatbot for interactive conversations.
 
 ## Features
 
 - **Modern Stack**: Next.js 16.1.3 with React 19.0.0
 - **Responsive Design**: Optimized for all screen sizes
 - **Dark Mode**: System-aware dark mode support
+- **AI Chatbot**: Integrated chatbot powered by Groq AI for interactive conversations
 - **Performance**: Optimized images, lazy loading, and caching
 - **SEO**: Structured data, Open Graph, and sitemap
 - **Analytics**: Vercel Analytics integration
@@ -16,8 +17,8 @@ A modern, responsive portfolio website built with Next.js 16, React 19, and Tail
 
 ### Prerequisites
 
-- Node.js >= 18.x
-- npm or yarn
+- Bun >= 1.x (recommended) or Node.js >= 18.x
+- Groq API Key (for AI Chatbot)
 
 ### Installation
 
@@ -27,66 +28,77 @@ git clone https://github.com/Decade23/profile.git
 cd profile
 
 # Install dependencies
-npm install
+bun install
+
+# Setup environment variables
+cp .env.example .env.local
+# Edit .env.local and add your GROQ_API_KEY
 
 # Run development server
-npm run dev
+bun run dev
 
 # Build for production
-npm run build
+bun run build
 
 # Start production server
-npm start
+bun run start
 ```
 
-The development server will start at [http://localhost:3000](http://localhost:3000).
+The development server will start at [http://localhost:3006](http://localhost:3006).
 
 ## Project Structure
 
 ```
 ├── components/           # React components
-│   ├── layouts/         # Layout components
+│   ├── layouts/         # Layout components (Layout, Seo, NavbarFooter)
 │   ├── profile/         # Profile-specific components
+│   ├── ChatBot.tsx      # AI Chatbot component (Groq integration)
 │   ├── ErrorBoundary.js # Error boundary component
 │   ├── Project.js       # Projects showcase
 │   ├── Repo.js          # Repository links
-│   └── Medsos.js       # Social media links
-├── data/               # Static data
+│   └── Medsos.js        # Social media links
+├── data/                # Static data
 │   ├── projects.json    # Projects data
-│   └── repos.json      # Repository data
-├── pages/              # Next.js pages (Pages Router)
-│   ├── _app.js         # App wrapper
-│   ├── _document.js    # Document wrapper
-│   ├── index.js        # Home page
-│   ├── profile.js      # Profile page
-│   ├── contact.js      # Contact page
-│   ├── history.js      # Work history
-│   └── privacy.js      # Privacy policy
-├── public/             # Static assets
-│   ├── assets/         # Images and media
-│   ├── robots.txt      # SEO robots file
-│   └── favicon.ico    # Site favicon
-├── styles/             # Global styles
-│   └── globals.css     # Tailwind imports
-├── next.config.js      # Next.js configuration
-├── tailwind.config.js  # Tailwind CSS configuration
-└── package.json        # Dependencies and scripts
+│   └── repos.json       # Repository data
+├── pages/               # Next.js pages (Pages Router)
+│   ├── api/             # API routes
+│   │   └── chat.ts      # Chatbot API endpoint (Groq)
+│   ├── _app.tsx         # App wrapper
+│   ├── _document.tsx    # Document wrapper
+│   ├── index.tsx        # Home page
+│   ├── profile.tsx      # Profile page
+│   ├── contact.tsx      # Contact page
+│   ├── history.tsx      # Work history timeline
+│   └── privacy.tsx      # Privacy policy
+├── public/              # Static assets
+│   ├── assets/          # Images and media
+│   │   └── images/porto # Company logos
+│   ├── robots.txt       # SEO robots file
+│   ├── favicon.svg      # Site favicon (DF icon)
+│   └── favicon.ico      # Fallback favicon
+├── styles/              # Global styles
+│   └── globals.css      # Tailwind imports
+├── next.config.js       # Next.js configuration
+├── tailwind.config.js   # Tailwind CSS configuration
+└── package.json         # Dependencies and scripts
 ```
 
 ## Available Scripts
 
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm start` - Start production server
-- `npm run lint` - Run ESLint
+- `bun run dev` - Start development server (port 3006)
+- `bun run build` - Build for production
+- `bun run start` - Start production server
+- `bun run lint` - Run ESLint
 
 ## Tech Stack
 
-- **Framework**: Next.js 16.1.3 (Pages Router)
+- **Framework**: Next.js 16.1.3 (Pages Router + Turbopack)
 - **UI Library**: React 19.0.0
 - **Styling**: Tailwind CSS 3.4.17
+- **AI Integration**: Groq API (Llama model)
 - **Analytics**: Vercel Analytics
 - **Theme**: next-themes
+- **Runtime**: Bun (recommended)
 
 ## Deployment
 
@@ -101,10 +113,20 @@ The development server will start at [http://localhost:3000](http://localhost:30
 Build the project first:
 
 ```bash
-npm run build
+bun run build
 ```
 
 Then deploy the `.next` folder and `public` folder.
+
+## Environment Variables
+
+Create a `.env.local` file with the following variables:
+
+```env
+GROQ_API_KEY=your_groq_api_key_here
+```
+
+Get your Groq API key from [console.groq.com](https://console.groq.com).
 
 ## Customization
 
@@ -180,12 +202,26 @@ Contributions are welcome! Please follow these steps:
 
 This project is open source and available under the [MIT License](LICENSE).
 
+## About Me
+
+**Dedi Fardiyanto S.Kom** - Tech Lead at Bank Tabungan Negara (BTN)
+
+With 13+ years of experience in software development, I've worked across various companies including:
+- Bank BTN (Tech Lead) - 2024-Present
+- Adira Finance (Senior Fullstack Developer) - 2021-2024
+- Koki Teknologi Indonesia - 2020-2021
+- Ellen May Institute - 2019-2020
+- Transvision - 2015-2019
+- Proxsis - 2013-2015
+- ACA Insurance - 2012-2013
+
 ## Contact
 
 - Email: dedif15@gmail.com
 - Website: [dedi.asia](https://dedi.asia)
 - GitHub: [@Decade23](https://github.com/Decade23)
+- Phone: +62 856 933 80 123
 
 ## Credits
 
-Built with ❤️ using Next.js and Tailwind CSS.
+Built with Next.js, Tailwind CSS, and Groq AI.
