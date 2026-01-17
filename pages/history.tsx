@@ -18,18 +18,44 @@ interface WorkExperience {
 
 const workHistory: WorkExperience[] = [
   {
-    company: "Adira Finance",
-    logo: "/assets/images/porto/adira.png",
-    position: "Senior Fullstack Developer",
-    period: "2021 - Present",
+    company: "Bank Tabungan Negara (BTN)",
+    logo: "/assets/images/porto/btn.png",
+    position: "Technology Lead",
+    period: "2024 - Present",
     location: "Jakarta, Indonesia",
     type: "fulltime",
     isCurrent: true,
     description:
-      "Leading development of internal systems and customer-facing applications for one of Indonesia's largest financial services companies.",
+      "Leading technology initiatives and development teams at one of Indonesia's largest state-owned banks, focusing on digital transformation and modern banking solutions.",
+    achievements: [
+      "Leading digital transformation initiatives for banking services",
+      "Architecting scalable solutions for high-volume banking transactions",
+      "Managing cross-functional development teams",
+      "Implementing best practices for software development lifecycle",
+    ],
+    technologies: [
+      "React",
+      "Node.js",
+      "Go",
+      "PostgreSQL",
+      "Docker",
+      "Kubernetes",
+      "AWS",
+    ],
+  },
+  {
+    company: "Adira Finance",
+    logo: "/assets/images/porto/adira.png",
+    position: "Senior Fullstack Developer",
+    period: "2021 - 2024",
+    location: "Jakarta, Indonesia",
+    type: "fulltime",
+    isCurrent: false,
+    description:
+      "Developed and maintained internal systems and customer-facing applications for one of Indonesia's largest financial services companies.",
     achievements: [
       "Architected and developed microservices handling 1M+ daily transactions",
-      "Led a team of 5 developers in modernizing legacy systems",
+      "Led a team of developers in modernizing legacy systems",
       "Reduced system downtime by 40% through improved monitoring",
       "Implemented CI/CD pipelines reducing deployment time by 60%",
     ],
@@ -43,55 +69,39 @@ const workHistory: WorkExperience[] = [
     ],
   },
   {
-    company: "Green Pramuka City",
-    logo: "/assets/images/porto/gpc.webp",
-    position: "Fullstack Developer",
-    period: "2020 - 2021",
-    location: "Jakarta, Indonesia",
-    type: "freelance",
-    isCurrent: false,
-    description:
-      "Developed marketing website and property management system for one of Jakarta's largest apartment complexes.",
-    achievements: [
-      "Built responsive marketing website increasing online inquiries by 150%",
-      "Developed tenant management portal serving 10,000+ residents",
-      "Integrated payment gateway for online rent collection",
-    ],
-    technologies: ["Next.js", "Tailwind CSS", "Node.js", "MySQL"],
-  },
-  {
-    company: "Koki Apps",
+    company: "KOKi Teknologi Indonesia",
     logo: "/assets/images/porto/koki.png",
     position: "Lead Developer",
-    period: "2019 - 2020",
+    period: "2019 - 2021",
     location: "Jakarta, Indonesia",
-    type: "contract",
+    type: "fulltime",
     isCurrent: false,
     description:
-      "Led development of food delivery platform connecting home cooks with customers.",
+      "Led development of food delivery platform connecting home cooks with customers, building scalable solutions from ground up.",
     achievements: [
       "Built scalable platform handling 500+ daily orders",
       "Developed real-time order tracking system",
       "Created CMS for managing cooks and menu items",
+      "Implemented payment gateway integration",
     ],
     technologies: ["Vue.js", "Laravel", "MySQL", "Redis", "Firebase"],
   },
   {
-    company: "Palembang Kito",
-    logo: "/assets/images/porto/plb_kito.jpeg",
+    company: "Transvision",
+    logo: "/assets/images/porto/transvision.png",
     position: "Fullstack Developer",
     period: "2018 - 2019",
-    location: "Remote",
-    type: "freelance",
+    location: "Jakarta, Indonesia",
+    type: "fulltime",
     isCurrent: false,
     description:
-      "Developed content management system for regional news and community platform.",
+      "Developed web applications and internal systems for Indonesia's leading pay-TV provider.",
     achievements: [
-      "Built CMS supporting 50+ content creators",
-      "Implemented SEO optimizations increasing organic traffic by 200%",
-      "Developed mobile-responsive design for 70% mobile user base",
+      "Built customer-facing web applications",
+      "Developed internal management systems",
+      "Integrated with broadcasting and subscription systems",
     ],
-    technologies: ["Laravel", "Vue.js", "MySQL", "Bootstrap"],
+    technologies: ["PHP", "Laravel", "Vue.js", "MySQL", "REST API"],
   },
   {
     company: "Ellen May Institute",
@@ -102,7 +112,7 @@ const workHistory: WorkExperience[] = [
     type: "contract",
     isCurrent: false,
     description:
-      "Developed educational platform and CMS for stock trading courses and webinars.",
+      "Developed educational platform and CMS for stock trading courses and webinars at Indonesia's prominent stock market school.",
     achievements: [
       "Built learning management system for 1000+ students",
       "Integrated payment system for course purchases",
@@ -110,12 +120,63 @@ const workHistory: WorkExperience[] = [
     ],
     technologies: ["PHP", "Laravel", "MySQL", "jQuery", "Bootstrap"],
   },
+  {
+    company: "Proxsis",
+    logo: "/assets/images/porto/proxsis.png",
+    position: "Web Developer",
+    period: "2016 - 2017",
+    location: "Jakarta, Indonesia",
+    type: "fulltime",
+    isCurrent: false,
+    description:
+      "Developed enterprise solutions and consulting projects for various corporate clients.",
+    achievements: [
+      "Built enterprise web applications for corporate clients",
+      "Developed business process automation tools",
+      "Created reporting and analytics dashboards",
+    ],
+    technologies: ["PHP", "CodeIgniter", "MySQL", "jQuery", "Bootstrap"],
+  },
+  {
+    company: "Valdo International",
+    logo: "/assets/images/porto/valdo.png",
+    position: "Junior Developer",
+    period: "2015 - 2016",
+    location: "Jakarta, Indonesia",
+    type: "fulltime",
+    isCurrent: false,
+    description:
+      "Started professional career developing web applications and maintaining existing systems.",
+    achievements: [
+      "Developed and maintained client web applications",
+      "Collaborated with senior developers on large-scale projects",
+      "Gained expertise in full-stack web development",
+    ],
+    technologies: ["PHP", "MySQL", "JavaScript", "HTML", "CSS"],
+  },
+  {
+    company: "Ace Hardware Indonesia",
+    logo: "/assets/images/porto/ace.png",
+    position: "IT Support / Junior Developer",
+    period: "2014 - 2015",
+    location: "Jakarta, Indonesia",
+    type: "fulltime",
+    isCurrent: false,
+    description:
+      "Provided IT support and developed internal tools for Indonesia's largest home improvement retailer.",
+    achievements: [
+      "Provided technical support for retail operations",
+      "Developed internal productivity tools",
+      "Maintained and troubleshooted IT infrastructure",
+    ],
+    technologies: ["PHP", "MySQL", "VBA", "Excel"],
+  },
 ];
 
 const stats = [
-  { label: "Years of Experience", value: "7+" },
+  { label: "Years of Experience", value: "10+" },
   { label: "Projects Completed", value: "50+" },
-  { label: "Companies Worked", value: "10+" },
+  { label: "Companies Worked", value: "8+" },
   { label: "Happy Clients", value: "20+" },
 ];
 
@@ -174,7 +235,7 @@ export default function History() {
               {/* Timeline */}
               <div className="relative">
                 {/* Timeline Line */}
-                <div className="absolute left-0 sm:left-1/2 sm:-translate-x-px top-0 bottom-0 w-0.5 bg-gradient-to-b from-fuchsia-500 via-violet-500 to-slate-300 dark:to-slate-600" />
+                <div className="absolute left-5 sm:left-1/2 sm:-translate-x-px top-0 bottom-0 w-0.5 bg-gradient-to-b from-fuchsia-500 via-violet-500 to-slate-300 dark:to-slate-600" />
 
                 {/* Timeline Items */}
                 <div className="space-y-12">
@@ -185,17 +246,58 @@ export default function History() {
                         index % 2 === 0 ? "sm:flex-row-reverse" : ""
                       }`}
                     >
-                      {/* Timeline Dot */}
-                      <div className="absolute left-0 sm:left-1/2 sm:-translate-x-1/2 w-4 h-4 rounded-full bg-white dark:bg-slate-900 border-4 border-fuchsia-500 shadow-lg z-10">
-                        {job.isCurrent && (
-                          <span className="absolute inset-0 rounded-full bg-fuchsia-400 animate-ping opacity-50" />
-                        )}
+                      {/* Timeline Bullet - Improved Design */}
+                      <div className="absolute left-0 sm:left-1/2 sm:-translate-x-1/2 z-10">
+                        {/* Year Badge */}
+                        <div
+                          className={`relative flex items-center justify-center w-10 h-10 rounded-xl shadow-lg transition-all duration-300 ${
+                            job.isCurrent
+                              ? "bg-gradient-to-br from-fuchsia-500 to-violet-600"
+                              : "bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-600"
+                          }`}
+                        >
+                          {/* Icon */}
+                          <svg
+                            className={`w-5 h-5 ${job.isCurrent ? "text-white" : "text-fuchsia-500 dark:text-fuchsia-400"}`}
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                            strokeWidth={2}
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                            />
+                          </svg>
+                          {/* Pulse Animation for Current */}
+                          {job.isCurrent && (
+                            <>
+                              <span className="absolute inset-0 rounded-xl bg-fuchsia-400 animate-ping opacity-30" />
+                              <span className="absolute -top-1 -right-1 w-3 h-3 rounded-full bg-emerald-500 border-2 border-white dark:border-slate-800" />
+                            </>
+                          )}
+                        </div>
+                        {/* Year Label - Hidden on mobile, shown on desktop */}
+                        <div
+                          className={`hidden sm:block absolute top-12 left-1/2 -translate-x-1/2 whitespace-nowrap`}
+                        >
+                          <span
+                            className={`text-xs font-bold px-2 py-1 rounded-md ${
+                              job.isCurrent
+                                ? "bg-fuchsia-100 dark:bg-fuchsia-900/50 text-fuchsia-700 dark:text-fuchsia-300"
+                                : "bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-400"
+                            }`}
+                          >
+                            {job.period.split(" - ")[0]}
+                          </span>
+                        </div>
                       </div>
 
                       {/* Content */}
                       <div
-                        className={`flex-1 ml-8 sm:ml-0 ${
-                          index % 2 === 0 ? "sm:pr-12" : "sm:pl-12"
+                        className={`flex-1 ml-14 sm:ml-0 ${
+                          index % 2 === 0 ? "sm:pr-16" : "sm:pl-16"
                         }`}
                       >
                         <div
