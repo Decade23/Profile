@@ -1,5 +1,33 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
+/* NProgress Loading Bar */
+#nprogress {
+    pointer-events: none;
+}
+
+#nprogress .bar {
+    background: linear-gradient(to right, #d946ef, #a855f7, #ec4899);
+    position: fixed;
+    z-index: 9999;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+}
+
+#nprogress .peg {
+    display: block;
+    position: absolute;
+    right: 0px;
+    width: 100px;
+    height: 100%;
+    box-shadow:
+        0 0 10px #d946ef,
+        0 0 5px #d946ef;
+    opacity: 1;
+    transform: rotate(3deg) translate(0px, -4px);
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

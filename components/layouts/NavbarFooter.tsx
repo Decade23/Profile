@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useCallback } from "react";
 
 interface NavItem {
   title: string;
@@ -57,6 +58,17 @@ const navItems: NavItem[] = [
 export default function NavbarFooter() {
   const router = useRouter();
 
+  const handleNavClick = useCallback(
+    (e: React.MouseEvent<HTMLAnchorElement>, link: string) => {
+      // If already on the same page, prevent navigation
+      if (router.pathname === link) {
+        e.preventDefault();
+        return;
+      }
+    },
+    [router.pathname],
+  );
+
   return (
     <nav className="fixed bottom-0 left-0 right-0 z-50 safe-bottom">
       {/* Glassmorphism background */}
@@ -70,17 +82,20 @@ export default function NavbarFooter() {
                 <Link
                   href={item.link}
                   key={index}
+                  prefetch={true}
+                  onClick={(e) => handleNavClick(e, item.link)}
                   className={`
-                    relative flex flex-col items-center justify-center
-                    min-w-[4rem] sm:min-w-[5rem] py-2 px-3 rounded-xl
-                    transition-colors duration-150 group
-                    touch-manipulation cursor-pointer select-none
-                    ${
-                      isActive
-                        ? "bg-fuchsia-100 dark:bg-fuchsia-900/40 text-fuchsia-600 dark:text-fuchsia-400"
-                        : "text-slate-500 dark:text-slate-400 active:text-fuchsia-600 dark:active:text-fuchsia-400 active:bg-slate-100 dark:active:bg-slate-800/50 [@media(hover:hover)]:hover:text-fuchsia-600 [@media(hover:hover)]:dark:hover:text-fuchsia-400 [@media(hover:hover)]:hover:bg-slate-100 [@media(hover:hover)]:dark:hover:bg-slate-800/50"
-                    }
-                  `}
+                      relative flex flex-col items-center justify-center
+                      min-w-[4rem] sm:min-w-[5rem] py-2 px-3 rounded-xl
+                      transition-colors duration-100 group
+                      touch-manipulation cursor-pointer select-none
+                      ${
+                        isActive
+                          ? "bg-fuchsia-100 dark:bg-fuchsia-900/40 text-fuchsia-600 dark:text-fuchsia-400"
+                          : "text-slate-500 dark:text-slate-400 active:text-fuchsia-600 dark:active:text-fuchsia-400 active:bg-slate-100 dark:active:bg-slate-800/50 [@media(hover:hover)]:hover:text-fuchsia-600 [@media(hover:hover)]:dark:hover:text-fuchsia-400 [@media(hover:hover)]:hover:bg-slate-100 [@media(hover:hover)]:dark:hover:bg-slate-800/50"
+                      }
+                    `}
+                  style={{ WebkitTapHighlightColor: "transparent" }}
                 >
                   {/* Active indicator */}
                   {isActive && (
@@ -91,8 +106,8 @@ export default function NavbarFooter() {
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className={`
-                      h-5 w-5 sm:h-6 sm:w-6 transition-transform duration-150
-                      ${isActive ? "scale-110" : "group-active:scale-110 [@media(hover:hover)]:group-hover:scale-110"}
+                      h-5 w-5 sm:h-6 sm:w-6 transition-transform duration-100
+                      ${isActive ? "scale-110" : "group-active:scale-105"}
                     `}
                     fill="none"
                     viewBox="0 0 24 24"
@@ -106,8 +121,7 @@ export default function NavbarFooter() {
                   <span
                     className={`
                       mt-1 text-[10px] sm:text-xs font-medium
-                      transition-opacity duration-150
-                      ${isActive ? "opacity-100" : "opacity-70 group-active:opacity-100 [@media(hover:hover)]:group-hover:opacity-100"}
+                      ${isActive ? "opacity-100" : "opacity-80"}
                     `}
                   >
                     {item.title}
