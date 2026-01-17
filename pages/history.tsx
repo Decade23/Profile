@@ -151,7 +151,7 @@ const workHistory: WorkExperience[] = [
   },
   {
     company: "PT ACA (Asuransi Central Asia)",
-    logo: "/assets/images/porto/aca.png",
+    logo: "/assets/images/porto/aca.jpg",
     position: "MIS / Admin Support",
     period: "2012 - 2013",
     location: "Jakarta, Indonesia",
