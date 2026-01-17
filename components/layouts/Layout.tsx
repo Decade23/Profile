@@ -38,9 +38,15 @@ function ThemeToggle() {
   return (
     <button
       onClick={toggleTheme}
+      onTouchEnd={(e) => {
+        e.preventDefault();
+        toggleTheme();
+      }}
       className="w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center
-                 hover:bg-slate-200 dark:hover:bg-slate-700 transition-all duration-300 hover:scale-105
-                 border border-slate-200 dark:border-slate-700"
+                 active:bg-slate-200 dark:active:bg-slate-700 transition-colors duration-150
+                 border border-slate-200 dark:border-slate-700
+                 touch-manipulation select-none cursor-pointer"
+      style={{ WebkitTapHighlightColor: "transparent" }}
       aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
     >
       {theme === "dark" ? (
@@ -87,7 +93,7 @@ function Header() {
         <div className="flex items-center justify-between h-16 sm:h-20">
           {/* Logo / Brand */}
           <div className="flex items-center gap-2">
-            <div className="w-10 h-10 rounded-xl bg-slate-900 dark:bg-white flex items-center justify-center shadow-lg transition-all duration-300 hover:scale-105">
+            <div className="w-10 h-10 rounded-xl bg-slate-900 dark:bg-white flex items-center justify-center shadow-lg transition-colors duration-150">
               <span className="text-white dark:text-slate-900 font-bold text-sm">
                 DF
               </span>
@@ -106,7 +112,7 @@ function Header() {
 
 export default function Layout({ title, children, seo = {} }: LayoutProps) {
   return (
-    <div className="min-h-screen bg-white dark:bg-slate-900 transition-colors duration-300">
+    <div className="min-h-screen bg-white dark:bg-slate-900 transition-colors duration-150">
       <Seo title={title} {...seo} />
 
       {/* Header with theme toggle */}
