@@ -107,21 +107,21 @@ export default function Medsos() {
       </div>
 
       {/* CTA Card */}
-      <div className="mt-8 p-6 sm:p-8 rounded-2xl bg-slate-900 dark:bg-slate-800 border border-slate-800 dark:border-slate-700">
+      <div className="mt-8 p-6 sm:p-8 rounded-2xl bg-gradient-to-r from-fuchsia-50 to-violet-50 dark:from-slate-800 dark:to-slate-800 border border-fuchsia-100 dark:border-slate-700">
         <div className="flex flex-col sm:flex-row sm:items-center gap-4">
           <div className="flex-1">
-            <h3 className="text-xl sm:text-2xl font-black text-white mb-2">
+            <h3 className="text-xl sm:text-2xl font-black text-slate-800 dark:text-white mb-2">
               Let's Work Together
             </h3>
-            <p className="text-slate-400">
+            <p className="text-slate-600 dark:text-slate-400">
               Have a project in mind? I'd love to hear about it.
             </p>
           </div>
           <Link
             href="/contact"
             className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full
-                     bg-fuchsia-500 text-white font-bold text-sm
-                     hover:bg-fuchsia-400 transition-colors"
+                     bg-fuchsia-400 dark:bg-fuchsia-500 text-white font-bold text-sm
+                     hover:bg-fuchsia-500 dark:hover:bg-fuchsia-400 transition-colors"
           >
             Get in Touch
             <svg

@@ -15,8 +15,8 @@ export default function Project() {
         <h2 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white">
           Projects
         </h2>
-        <span className="text-sm font-medium text-slate-400 dark:text-slate-500">
-          {activeProjects.length} works
+        <span className="text-sm font-medium text-fuchsia-600 dark:text-fuchsia-400">
+          Featured Works
         </span>
       </div>
 
@@ -48,7 +48,7 @@ function ProjectCard({ project }: ProjectCardProps) {
                  transition-all duration-300 hover:shadow-lg"
     >
       {/* Image Container */}
-      <div className="relative aspect-[4/3] w-full bg-slate-100 dark:bg-slate-900 overflow-hidden">
+      <div className="relative aspect-[4/3] w-full bg-white overflow-hidden">
         <Image
           src={project.img.src}
           alt={project.img.alt}

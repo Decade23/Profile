@@ -211,7 +211,7 @@ export default function Profile() {
                       href={whatsappLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-bold text-sm hover:bg-slate-800 dark:hover:bg-slate-100 transition-all duration-300 shadow-lg"
+                      className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-fuchsia-400 to-violet-500 dark:from-fuchsia-500 dark:to-violet-600 text-white font-bold text-sm hover:from-fuchsia-500 hover:to-violet-600 dark:hover:from-fuchsia-400 dark:hover:to-violet-500 transition-all duration-300 shadow-lg shadow-fuchsia-500/25 hover:shadow-xl hover:shadow-fuchsia-500/30"
                     >
                       <svg
                         className="w-5 h-5"

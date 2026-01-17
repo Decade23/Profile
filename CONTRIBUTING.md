@@ -25,8 +25,7 @@ By participating in this project, you agree to:
 
 ### Prerequisites
 
-- Node.js >= 18.x
-- npm or yarn
+- Bun >= 1.x (recommended) or Node.js >= 18.x
 - Git
 - Text editor (VS Code recommended)
 
@@ -49,13 +48,13 @@ git remote add upstream https://github.com/Decade23/profile.git
 4. Install dependencies:
 
 ```bash
-npm install
+bun install
 ```
 
 5. Start development server:
 
 ```bash
-npm run dev
+bun run dev
 ```
 
 ## Development Workflow
@@ -91,16 +90,16 @@ git checkout -b fix/bug-description
 
 ```bash
 # Run linter
-npm run lint
+bun run lint
 
 # Run tests (when available)
-npm test
+bun test
 
 # Build production version
-npm run build
+bun run build
 
 # Test production build
-npm start
+bun run start
 ```
 
 ### 4. Commit Your Changes

@@ -4,22 +4,22 @@ This guide covers deploying the Dedi Fardiyanto portfolio website to various pla
 
 ## Prerequisites
 
-- Node.js >= 18.x
-- npm or yarn
+- Bun >= 1.x (recommended) or Node.js >= 18.x
 - Git
+- Groq API Key (for AI Chatbot feature)
 
 ## Build Process
 
 ### 1. Install Dependencies
 
 ```bash
-npm install
+bun install
 ```
 
 ### 2. Run Build
 
 ```bash
-npm run build
+bun run build
 ```
 
 This creates an optimized `.next` folder ready for deployment.
@@ -27,7 +27,7 @@ This creates an optimized `.next` folder ready for deployment.
 ### 3. Test Production Build
 
 ```bash
-npm start
+bun run start
 ```
 
 ## Deployment Platforms
@@ -48,7 +48,7 @@ Vercel is the creator of Next.js and provides the best integration.
 1. Install Vercel CLI:
 
 ```bash
-npm i -g vercel
+bun add -g vercel
 ```
 
 2. Login:
@@ -63,9 +63,15 @@ vercel login
 vercel --prod
 ```
 
-#### Environment Variables (Optional)
+#### Environment Variables
 
-No environment variables required for this project.
+Set the following environment variables in Vercel Dashboard:
+
+```env
+GROQ_API_KEY=your_groq_api_key_here
+```
+
+Get your Groq API key from [console.groq.com](https://console.groq.com).
 
 #### Vercel Analytics
 
@@ -78,7 +84,7 @@ Already integrated in `_app.js`. No additional setup needed.
 1. Install CLI:
 
 ```bash
-npm install -g netlify-cli
+bun add -g netlify-cli
 ```
 
 2. Login:
@@ -97,9 +103,10 @@ netlify deploy --prod
 
 1. Connect repository in Netlify Dashboard
 2. Configure build settings:
-   - **Build command**: `npm run build`
+   - **Build command**: `bun run build`
    - **Publish directory**: `.next`
-3. Click Deploy
+3. Add environment variables: `GROQ_API_KEY`
+4. Click Deploy
 
 **Note**: Add this to `netlify.toml` for Pages Router:
 
@@ -112,9 +119,9 @@ package = "@netlify/plugin-nextjs"
 
 1. Connect repository in Amplify Console
 2. Configure build settings:
-   - **Build command**: `npm run build`
+   - **Build command**: `bun run build`
    - **Output directory**: `.next`
-3. Add environment variables if needed
+3. Add environment variables: `GROQ_API_KEY`
 4. Click Deploy
 
 ### Docker
@@ -124,18 +131,18 @@ package = "@netlify/plugin-nextjs"
 Create `Dockerfile`:
 
 ```dockerfile
-FROM node:18-alpine AS base
+FROM oven/bun:1 AS base
 
 WORKDIR /app
 
 FROM base AS deps
-COPY package.json yarn.lock* package-lock.json* ./
-RUN npm ci
+COPY package.json bun.lockb ./
+RUN bun install --frozen-lockfile
 
 FROM base AS builder
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
-RUN npm run build
+RUN bun run build
 
 FROM base AS runner
 ENV NODE_ENV production
@@ -144,7 +151,8 @@ COPY --from=builder /app/.next/standalone ./
 COPY --from=builder /app/.next/static ./.next/static
 
 EXPOSE 3000
-CMD ["node", "server.js"]
+ENV GROQ_API_KEY=""
+CMD ["bun", "server.js"]
 ```
 
 Update `next.config.js` for standalone output:
@@ -168,17 +176,23 @@ docker run -p 3000:3000 portfolio
 1. Build project locally:
 
 ```bash
-npm run build
+bun run build
 ```
 
 2. Install dependencies on server:
 
 ```bash
-npm install
-npm install -g pm2
+bun install
+bun add -g pm2
 ```
 
-3. Upload `.next`, `public`, `package.json`, `package-lock.json`
+3. Upload `.next`, `public`, `package.json`, `bun.lockb`
+
+4. Set environment variables:
+
+```bash
+export GROQ_API_KEY=your_groq_api_key_here
+```
 
 4. Start with PM2:
 
@@ -221,14 +235,14 @@ pm2 startup
 
 **Error**: `Module not found`
 
-**Solution**: Run `npm install` again
+**Solution**: Run `bun install` again
 
 **Error**: `Out of memory`
 
-**Solution**: Increase Node.js memory limit:
+**Solution**: Increase memory limit:
 
 ```bash
-NODE_OPTIONS="--max-old-space-size=4096" npm run build
+NODE_OPTIONS="--max-old-space-size=4096" bun run build
 ```
 
 ### Runtime Errors
@@ -248,7 +262,7 @@ NODE_OPTIONS="--max-old-space-size=4096" npm run build
 **Solutions**:
 - Enable gzip compression
 - Optimize images
-- Check bundle size with `npm run build`
+- Check bundle size with `bun run build`
 - Consider CDN for static assets
 
 ## CI/CD
@@ -269,12 +283,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: oven-sh/setup-bun@v1
         with:
-          node-version: 18
-      - run: npm ci
-      - run: npm run build
-      - run: npm test
+          bun-version: latest
+      - run: bun install
+      - run: bun run build
+      - run: bun test
       - uses: amondnet/vercel-action@v20
         with:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
@@ -401,4 +415,4 @@ For deployment issues:
 
 ---
 
-Last updated: January 2026
+Last updated: January 2025

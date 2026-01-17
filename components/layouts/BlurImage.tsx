@@ -7,20 +7,25 @@ interface BlurImageProps {
   customProp?: any;
 }
 
-export default function BlurImage({ src, alt = 'image', customProp }: BlurImageProps) {
+export default function BlurImage({
+  src,
+  alt = "image",
+  customProp,
+}: BlurImageProps) {
   const [loading, setLoading] = useState(true);
 
   return (
     <Image
       src={src}
-      className={`${
+      className={`object-cover ${
         loading
           ? "grayscale blur-2xl scale-110"
           : "grayscale-0 blur-0 scale-100"
       }`}
       onLoad={() => setLoading(false)}
       fill
-      alt={alt} {...customProp}
+      alt={alt}
+      {...customProp}
     />
   );
 }
