@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
 import Seo from "./Seo";
 import NavbarFooter from "./NavbarFooter";
+import ChatBot from "../ChatBot";
 
 interface SeoProps {
   title?: string;
@@ -121,6 +122,9 @@ export default function Layout({ title, children, seo = {} }: LayoutProps) {
 
         {/* Bottom Navigation */}
         <NavbarFooter />
+
+        {/* AI ChatBot */}
+        <ChatBot />
       </div>
     </div>
   );
