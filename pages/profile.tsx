@@ -28,14 +28,14 @@ export default function Profile() {
             <div className="absolute bottom-0 left-0 w-72 h-72 bg-violet-100 dark:bg-violet-900/20 rounded-full blur-3xl opacity-50 translate-y-1/2 -translate-x-1/2" />
           </div>
 
-          <div className="relative px-4 sm:px-6 pt-20 pb-16 sm:pt-28 sm:pb-20">
-            <div className="max-w-2xl mx-auto lg:max-w-4xl xl:max-w-5xl">
+          <div className="relative px-4 sm:px-6 lg:px-8 pt-20 pb-16 sm:pt-28 sm:pb-20 lg:pt-32 lg:pb-24">
+            <div className="max-w-2xl mx-auto lg:max-w-4xl xl:max-w-5xl 2xl:max-w-6xl">
               <div className="flex flex-col md:flex-row items-center md:items-start gap-8 md:gap-12">
                 {/* Profile Image */}
                 <div className="relative flex-shrink-0">
                   <div className="absolute -inset-2 bg-gradient-to-br from-fuchsia-500 to-violet-500 rounded-3xl opacity-20 blur-lg" />
                   <div
-                    className={`relative w-48 h-48 sm:w-56 sm:h-56 rounded-3xl overflow-hidden border-4 border-white dark:border-slate-800 shadow-2xl transition-all duration-700 ${
+                    className={`relative w-48 h-48 sm:w-56 sm:h-56 lg:w-64 lg:h-64 rounded-3xl overflow-hidden border-4 border-white dark:border-slate-800 shadow-2xl transition-all duration-700 ${
                       imageLoading ? "scale-105 blur-lg" : "scale-100 blur-0"
                     }`}
                   >
@@ -60,13 +60,13 @@ export default function Profile() {
 
                 {/* Profile Info */}
                 <div className="flex-1 text-center md:text-left">
-                  <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 dark:text-white">
+                  <h1 className="text-3xl sm:text-4xl lg:text-5xl 2xl:text-6xl font-black text-slate-900 dark:text-white">
                     Dedi Fardiyanto
                   </h1>
-                  <p className="mt-2 text-lg sm:text-xl text-fuchsia-600 dark:text-fuchsia-400 font-semibold">
+                  <p className="mt-2 text-lg sm:text-xl lg:text-2xl text-fuchsia-600 dark:text-fuchsia-400 font-semibold">
                     Senior Fullstack Developer
                   </p>
-                  <p className="mt-4 text-slate-600 dark:text-slate-400 leading-relaxed max-w-lg">
+                  <p className="mt-4 text-slate-600 dark:text-slate-400 leading-relaxed max-w-lg lg:max-w-xl lg:text-lg">
                     Passionate software engineer with 7+ years of experience
                     building scalable web applications. I specialize in creating
                     high-performance solutions and leading technical teams to
@@ -118,7 +118,7 @@ export default function Profile() {
 
         {/* Main Content */}
         <div className="bg-slate-50 dark:bg-slate-800/50">
-          <div className="px-4 sm:px-6 py-16 sm:py-20 space-y-16">
+          <div className="px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24 space-y-16 lg:space-y-24">
             <About />
             <Values />
             <ProfileCTA whatsappLink={whatsappLink} />

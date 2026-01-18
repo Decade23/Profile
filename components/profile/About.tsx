@@ -1,4 +1,3 @@
-
 interface InfoItem {
   label: string;
   value: string;
@@ -130,11 +129,11 @@ const personalInfo: InfoItem[] = [
 export default function About() {
   return (
     <section>
-      <div className="max-w-2xl mx-auto lg:max-w-4xl xl:max-w-5xl">
-        <h2 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white mb-8">
+      <div className="max-w-2xl mx-auto lg:max-w-4xl xl:max-w-5xl 2xl:max-w-6xl">
+        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-900 dark:text-white mb-8 lg:mb-10">
           About Me
         </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
           {personalInfo.map((info, index) => (
             <div
               key={index}

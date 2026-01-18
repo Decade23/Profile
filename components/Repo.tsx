@@ -31,14 +31,14 @@ export default function Repo({ repos }: { repos: RepoItem[] }) {
   const activeRepos = repos.filter((r) => r.isActive);
 
   return (
-    <div className="max-w-2xl mx-auto lg:max-w-4xl xl:max-w-5xl">
+    <div className="max-w-2xl mx-auto lg:max-w-4xl xl:max-w-5xl 2xl:max-w-6xl">
       {/* Section Header */}
-      <h2 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white mb-6">
+      <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-900 dark:text-white mb-6 lg:mb-10">
         Repositories
       </h2>
 
       {/* Repo Links - Inline like Connect section */}
-      <div className="flex flex-wrap gap-3">
+      <div className="flex flex-wrap gap-3 lg:gap-4">
         {activeRepos.map((repo, index) => (
           <Link
             key={index}

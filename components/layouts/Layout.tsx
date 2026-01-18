@@ -88,7 +88,7 @@ function ThemeToggle() {
 function Header() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50">
-      <div className="max-w-2xl mx-auto lg:max-w-4xl xl:max-w-5xl px-4 sm:px-6">
+      <div className="max-w-2xl mx-auto lg:max-w-4xl xl:max-w-5xl 2xl:max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 sm:h-20">
           {/* Logo / Brand - Links to Home */}
           <div className="flex items-center gap-2">
@@ -124,7 +124,7 @@ export default function Layout({ title, children, seo = {} }: LayoutProps) {
       {/* Main Content */}
       <div className="flex flex-col min-h-screen">
         <main className="flex-1 pt-14 sm:pt-16 pb-20 sm:pb-24">
-          <div className="max-w-2xl mx-auto lg:max-w-4xl xl:max-w-5xl overflow-y-auto scrollbar-hide">
+          <div className="max-w-2xl mx-auto lg:max-w-4xl xl:max-w-5xl 2xl:max-w-6xl overflow-y-auto scrollbar-hide">
             {children}
           </div>
         </main>

@@ -151,12 +151,12 @@ export default function Contact() {
             <div className="absolute bottom-0 right-1/4 w-72 h-72 bg-violet-100 dark:bg-violet-900/20 rounded-full blur-3xl opacity-50" />
           </div>
 
-          <div className="relative px-4 sm:px-6 pt-20 pb-16 sm:pt-28 sm:pb-20">
-            <div className="max-w-2xl mx-auto lg:max-w-4xl xl:max-w-5xl text-center">
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-slate-900 dark:text-white">
+          <div className="relative px-4 sm:px-6 lg:px-8 pt-20 pb-16 sm:pt-28 sm:pb-20 lg:pt-32 lg:pb-24">
+            <div className="max-w-2xl mx-auto lg:max-w-4xl xl:max-w-5xl 2xl:max-w-6xl text-center">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl 2xl:text-7xl font-black text-slate-900 dark:text-white">
                 Let's Connect
               </h1>
-              <p className="mt-4 text-lg sm:text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
+              <p className="mt-4 text-lg sm:text-xl lg:text-2xl text-slate-600 dark:text-slate-400 max-w-2xl lg:max-w-3xl mx-auto">
                 Have a project in mind or just want to say hello? I'd love to
                 hear from you. Choose your preferred way to reach out.
               </p>
@@ -166,10 +166,10 @@ export default function Contact() {
 
         {/* Send a Message Section */}
         <div className="bg-slate-50 dark:bg-slate-800/50">
-          <div className="px-4 sm:px-6 py-16 sm:py-20">
-            <div className="max-w-2xl mx-auto lg:max-w-4xl xl:max-w-5xl">
+          <div className="px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24">
+            <div className="max-w-2xl mx-auto lg:max-w-4xl xl:max-w-5xl 2xl:max-w-6xl">
               {/* Send a Message Form */}
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
                 {/* Form */}
                 <div className="p-8 rounded-2xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-sm">
                   <h3 className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white mb-2">
@@ -403,13 +403,13 @@ export default function Contact() {
 
         {/* Get in Touch - Contact Methods */}
         <div className="bg-white dark:bg-slate-900">
-          <div className="px-4 sm:px-6 py-16 sm:py-20">
-            <div className="max-w-2xl mx-auto lg:max-w-4xl xl:max-w-5xl">
-              <h2 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white mb-8 text-center">
+          <div className="px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24">
+            <div className="max-w-2xl mx-auto lg:max-w-4xl xl:max-w-5xl 2xl:max-w-6xl">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-900 dark:text-white mb-8 lg:mb-12 text-center">
                 Get in Touch
               </h2>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
                 {contactMethods.map((method, index) => (
                   <a
                     key={index}
@@ -458,10 +458,10 @@ export default function Contact() {
 
         {/* Location Info */}
         <div className="bg-white dark:bg-slate-900">
-          <div className="px-4 sm:px-6 py-16 sm:py-20">
-            <div className="max-w-2xl mx-auto lg:max-w-4xl xl:max-w-5xl">
-              <div className="p-8 sm:p-12 rounded-3xl bg-gradient-to-br from-fuchsia-50 to-violet-50 dark:from-slate-800 dark:to-slate-800 border border-fuchsia-100 dark:border-slate-700 text-center">
-                <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-fuchsia-400 to-violet-500 text-white mb-6 shadow-lg">
+          <div className="px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24">
+            <div className="max-w-2xl mx-auto lg:max-w-4xl xl:max-w-5xl 2xl:max-w-6xl">
+              <div className="p-8 sm:p-12 lg:p-16 rounded-3xl bg-gradient-to-br from-fuchsia-50 to-violet-50 dark:from-slate-800 dark:to-slate-800 border border-fuchsia-100 dark:border-slate-700 text-center">
+                <div className="inline-flex items-center justify-center w-16 h-16 lg:w-20 lg:h-20 rounded-2xl bg-gradient-to-br from-fuchsia-400 to-violet-500 text-white mb-6 shadow-lg">
                   <svg
                     className="w-8 h-8"
                     fill="none"
@@ -481,10 +481,10 @@ export default function Contact() {
                     />
                   </svg>
                 </div>
-                <h2 className="text-2xl sm:text-3xl font-black text-slate-800 dark:text-white mb-3">
+                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-800 dark:text-white mb-3">
                   Based in Jakarta, Indonesia
                 </h2>
-                <p className="text-slate-600 dark:text-slate-400 max-w-lg mx-auto mb-6">
+                <p className="text-slate-600 dark:text-slate-400 text-base lg:text-lg max-w-lg lg:max-w-2xl mx-auto mb-6">
                   Available for remote work worldwide. Open to relocation for
                   the right opportunity.
                 </p>

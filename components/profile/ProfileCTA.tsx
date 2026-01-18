@@ -3,12 +3,12 @@ import Link from "next/link";
 export default function ProfileCTA({ whatsappLink }: { whatsappLink: string }) {
   return (
     <section>
-      <div className="max-w-2xl mx-auto lg:max-w-4xl xl:max-w-5xl">
-        <div className="p-8 sm:p-12 rounded-3xl bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-800 dark:to-slate-700 border border-slate-200 dark:border-slate-600 text-center">
-          <h2 className="text-2xl sm:text-3xl font-bold text-slate-800 dark:text-slate-100 mb-4">
+      <div className="max-w-2xl mx-auto lg:max-w-4xl xl:max-w-5xl 2xl:max-w-6xl">
+        <div className="p-8 sm:p-12 lg:p-16 rounded-3xl bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-800 dark:to-slate-700 border border-slate-200 dark:border-slate-600 text-center">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-800 dark:text-slate-100 mb-4">
             Let&apos;s Build Something Great Together
           </h2>
-          <p className="text-slate-600 dark:text-slate-300 max-w-lg mx-auto mb-8">
+          <p className="text-slate-600 dark:text-slate-300 max-w-lg lg:max-w-2xl mx-auto mb-8 lg:text-lg">
             I&apos;m always open to discussing new projects, creative ideas, or
             opportunities to be part of your vision.
           </p>

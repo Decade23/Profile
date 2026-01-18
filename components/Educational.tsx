@@ -51,9 +51,9 @@ export default function Educational() {
   const activeEdu = edu.filter((e) => e.isActive);
 
   return (
-    <div className="max-w-2xl mx-auto lg:max-w-4xl xl:max-w-5xl">
+    <div className="max-w-2xl mx-auto lg:max-w-4xl xl:max-w-5xl 2xl:max-w-6xl">
       {/* Section Header */}
-      <h2 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white mb-8">
+      <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-900 dark:text-white mb-8 lg:mb-10">
         Education
       </h2>
 
@@ -63,7 +63,7 @@ export default function Educational() {
         <div className="absolute left-[11px] sm:left-[15px] top-3 bottom-3 w-[2px] bg-slate-200 dark:bg-slate-700" />
 
         {/* Items */}
-        <div className="space-y-6">
+        <div className="space-y-6 lg:space-y-8">
           {activeEdu.map((item, index) => (
             <div key={index} className="relative pl-10 sm:pl-12">
               {/* Dot */}

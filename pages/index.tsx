@@ -104,13 +104,13 @@ export default function Home({ projects, repos }) {
           <div className="absolute bottom-20 -right-20 w-96 h-96 bg-violet-200 dark:bg-violet-900/30 rounded-full blur-3xl opacity-30" />
 
           {/* Hero Content */}
-          <div className="relative px-4 sm:px-6 pt-20 pb-20 sm:pt-28 sm:pb-28">
-            <div className="max-w-2xl mx-auto lg:max-w-4xl xl:max-w-5xl">
+          <div className="relative px-4 sm:px-6 lg:px-8 pt-20 pb-20 sm:pt-28 sm:pb-28 lg:pt-32 lg:pb-32 2xl:pt-40 2xl:pb-40">
+            <div className="max-w-2xl mx-auto lg:max-w-4xl xl:max-w-5xl 2xl:max-w-6xl">
               <div className="flex flex-col items-center text-center">
                 {/* Profile Image */}
                 <div className="relative group mb-8">
                   <div className="absolute -inset-1 bg-gradient-to-r from-fuchsia-500 to-violet-500 rounded-full opacity-70 blur group-hover:opacity-100 transition-opacity duration-500" />
-                  <div className="relative w-28 h-28 sm:w-36 sm:h-36 rounded-full overflow-hidden ring-4 ring-white dark:ring-slate-800 shadow-2xl">
+                  <div className="relative w-28 h-28 sm:w-36 sm:h-36 lg:w-44 lg:h-44 2xl:w-52 2xl:h-52 rounded-full overflow-hidden ring-4 ring-white dark:ring-slate-800 shadow-2xl">
                     <BlurImage src="/assets/images/dedi.png" />
                   </div>
                   {/* Status Dot */}
@@ -120,52 +120,52 @@ export default function Home({ projects, repos }) {
                 </div>
 
                 {/* Name & Title */}
-                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-slate-900 dark:text-white tracking-tight">
+                <h1 className="text-4xl sm:text-5xl lg:text-6xl 2xl:text-7xl font-black text-slate-900 dark:text-white tracking-tight">
                   Dedi Fardiyanto
                 </h1>
-                <p className="mt-3 text-lg sm:text-xl text-fuchsia-600 dark:text-fuchsia-400 font-semibold tracking-wide">
+                <p className="mt-3 text-lg sm:text-xl lg:text-2xl text-fuchsia-600 dark:text-fuchsia-400 font-semibold tracking-wide">
                   Senior Fullstack Developer
                 </p>
 
                 {/* Brief Description */}
-                <p className="mt-6 text-base sm:text-lg text-slate-600 dark:text-slate-400 max-w-xl leading-relaxed">
+                <p className="mt-6 text-base sm:text-lg lg:text-xl text-slate-600 dark:text-slate-400 max-w-xl lg:max-w-2xl leading-relaxed">
                   Building scalable web solutions with 7+ years of experience.
                   Specialized in high-performance applications and technical
                   leadership.
                 </p>
 
                 {/* Stats */}
-                <div className="mt-10 flex items-center gap-8 sm:gap-12">
+                <div className="mt-10 lg:mt-14 flex items-center gap-8 sm:gap-12 lg:gap-16">
                   <div className="text-center">
-                    <div className="text-3xl sm:text-4xl font-black text-slate-900 dark:text-white">
+                    <div className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 dark:text-white">
                       <AnimatedCounter target={7} suffix="+" />
                     </div>
                     <div className="mt-1 text-sm text-slate-500 dark:text-slate-400 font-medium uppercase tracking-wider">
                       Years
                     </div>
                   </div>
-                  <div className="w-px h-12 bg-slate-200 dark:bg-slate-700" />
+                  <div className="w-px h-12 lg:h-16 bg-slate-200 dark:bg-slate-700" />
                   <div className="text-center">
-                    <div className="text-3xl sm:text-4xl font-black text-slate-900 dark:text-white">
+                    <div className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 dark:text-white">
                       <AnimatedCounter target={50} suffix="+" />
                     </div>
-                    <div className="mt-1 text-sm text-slate-500 dark:text-slate-400 font-medium uppercase tracking-wider">
+                    <div className="mt-1 text-sm lg:text-base text-slate-500 dark:text-slate-400 font-medium uppercase tracking-wider">
                       Projects
                     </div>
                   </div>
-                  <div className="w-px h-12 bg-slate-200 dark:bg-slate-700" />
+                  <div className="w-px h-12 lg:h-16 bg-slate-200 dark:bg-slate-700" />
                   <div className="text-center">
-                    <div className="text-3xl sm:text-4xl font-black text-slate-900 dark:text-white">
+                    <div className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 dark:text-white">
                       <AnimatedCounter target={20} suffix="+" />
                     </div>
-                    <div className="mt-1 text-sm text-slate-500 dark:text-slate-400 font-medium uppercase tracking-wider">
+                    <div className="mt-1 text-sm lg:text-base text-slate-500 dark:text-slate-400 font-medium uppercase tracking-wider">
                       Clients
                     </div>
                   </div>
                 </div>
 
                 {/* CTA Buttons */}
-                <div className="mt-10 flex flex-wrap justify-center gap-4">
+                <div className="mt-10 lg:mt-14 flex flex-wrap justify-center gap-4 lg:gap-6">
                   <a
                     href={whatsappLink}
                     target="_blank"
@@ -220,11 +220,11 @@ export default function Home({ projects, repos }) {
 
         {/* Main Content */}
         <div className="relative bg-slate-50 dark:bg-slate-800/50">
-          <div className="px-4 sm:px-6 py-16 sm:py-20 space-y-16 sm:space-y-20">
+          <div className="px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24 space-y-16 sm:space-y-20 lg:space-y-24">
             {/* Status Card - Available for Work */}
             <section>
-              <div className="max-w-2xl mx-auto lg:max-w-4xl xl:max-w-5xl">
-                <div className="relative p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-emerald-500 to-teal-600 shadow-xl shadow-emerald-500/20 overflow-hidden">
+              <div className="max-w-2xl mx-auto lg:max-w-4xl xl:max-w-5xl 2xl:max-w-6xl">
+                <div className="relative p-6 sm:p-8 lg:p-10 rounded-3xl bg-gradient-to-br from-emerald-500 to-teal-600 shadow-xl shadow-emerald-500/20 overflow-hidden">
                   {/* Background Pattern */}
                   <div className="absolute inset-0 opacity-10">
                     <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,white_1px,transparent_1px)] bg-[size:20px_20px]" />
@@ -234,11 +234,11 @@ export default function Home({ projects, repos }) {
                     {/* Content */}
                     <div className="flex-1">
                       <div className="flex flex-wrap items-center gap-3 mb-3">
-                        <h2 className="text-2xl sm:text-3xl font-black text-white">
+                        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-white">
                           Ready to Build Your Next Project?
                         </h2>
                       </div>
-                      <p className="text-emerald-100 text-base sm:text-lg mb-5">
+                      <p className="text-emerald-100 text-base sm:text-lg lg:text-xl mb-5">
                         I'm currently{" "}
                         <span className="font-bold text-white">
                           available for new opportunities
@@ -294,12 +294,12 @@ export default function Home({ projects, repos }) {
 
             {/* Tech Stack Section - Compact */}
             <section>
-              <div className="max-w-2xl mx-auto lg:max-w-4xl xl:max-w-5xl">
-                <h2 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white mb-8">
+              <div className="max-w-2xl mx-auto lg:max-w-4xl xl:max-w-5xl 2xl:max-w-6xl">
+                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-900 dark:text-white mb-8 lg:mb-10">
                   Tech Stack
                 </h2>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
                   {techCategories.map((category) => (
                     <div
                       key={category.name}

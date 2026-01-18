@@ -1,12 +1,11 @@
-
 export default function Values() {
   return (
     <section>
-      <div className="max-w-2xl mx-auto lg:max-w-4xl xl:max-w-5xl">
-        <h2 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white mb-8">
+      <div className="max-w-2xl mx-auto lg:max-w-4xl xl:max-w-5xl 2xl:max-w-6xl">
+        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-900 dark:text-white mb-8 lg:mb-10">
           What I Value
         </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 lg:gap-8">
           {[
             {
               title: "Clean Code",
@@ -71,15 +70,15 @@ export default function Values() {
           ].map((value, index) => (
             <div
               key={index}
-              className="p-6 rounded-2xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-sm text-center"
+              className="p-6 lg:p-8 rounded-2xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-sm text-center hover:shadow-lg transition-shadow"
             >
-              <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-fuchsia-500 to-violet-500 text-white mb-4">
+              <div className="inline-flex items-center justify-center w-16 h-16 lg:w-20 lg:h-20 rounded-2xl bg-gradient-to-br from-fuchsia-500 to-violet-500 text-white mb-4">
                 {value.icon}
               </div>
-              <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-2">
+              <h3 className="text-lg lg:text-xl font-bold text-slate-900 dark:text-white mb-2">
                 {value.title}
               </h3>
-              <p className="text-slate-600 dark:text-slate-400 text-sm">
+              <p className="text-slate-600 dark:text-slate-400 text-sm lg:text-base">
                 {value.description}
               </p>
             </div>

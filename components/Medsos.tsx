@@ -74,14 +74,14 @@ export default function Medsos() {
     .sort((a, b) => a.sort - b.sort);
 
   return (
-    <div className="max-w-2xl mx-auto lg:max-w-4xl xl:max-w-5xl">
+    <div className="max-w-2xl mx-auto lg:max-w-4xl xl:max-w-5xl 2xl:max-w-6xl">
       {/* Section Header */}
-      <h2 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white mb-6">
+      <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-900 dark:text-white mb-6 lg:mb-10">
         Connect
       </h2>
 
       {/* Social Links */}
-      <div className="flex flex-wrap gap-3">
+      <div className="flex flex-wrap gap-3 lg:gap-4">
         {activeMedsos.map((item, index) => (
           <Link
             key={index}
@@ -107,13 +107,13 @@ export default function Medsos() {
       </div>
 
       {/* CTA Card */}
-      <div className="mt-8 p-6 sm:p-8 rounded-2xl bg-gradient-to-r from-fuchsia-50 to-violet-50 dark:from-slate-800 dark:to-slate-800 border border-fuchsia-100 dark:border-slate-700">
-        <div className="flex flex-col sm:flex-row sm:items-center gap-4">
+      <div className="mt-8 lg:mt-12 p-6 sm:p-8 lg:p-10 rounded-2xl bg-gradient-to-r from-fuchsia-50 to-violet-50 dark:from-slate-800 dark:to-slate-800 border border-fuchsia-100 dark:border-slate-700">
+        <div className="flex flex-col sm:flex-row sm:items-center gap-4 lg:gap-6">
           <div className="flex-1">
-            <h3 className="text-xl sm:text-2xl font-black text-slate-800 dark:text-white mb-2">
+            <h3 className="text-xl sm:text-2xl lg:text-3xl font-black text-slate-800 dark:text-white mb-2">
               Let's Work Together
             </h3>
-            <p className="text-slate-600 dark:text-slate-400">
+            <p className="text-slate-600 dark:text-slate-400 lg:text-lg">
               Have a project in mind? I'd love to hear about it.
             </p>
           </div>
