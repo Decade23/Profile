@@ -2,6 +2,7 @@ import Layout from "@components/layouts/Layout";
 import BlurImage from "@components/layouts/BlurImage";
 import { useState, useEffect } from "react";
 import dynamic from "next/dynamic";
+import Link from "next/link";
 
 const Project = dynamic(() => import("@components/Project"));
 const Repo = dynamic(() => import("@components/Repo"));
@@ -186,7 +187,7 @@ export default function Home({ projects, repos }) {
                     </svg>
                     Hire Me
                   </a>
-                  <a
+                  <Link
                     href="/profile"
                     className="px-8 py-3.5 rounded-full bg-transparent text-slate-900 dark:text-white font-bold text-sm
                              border-2 border-slate-200 dark:border-slate-700
@@ -195,7 +196,7 @@ export default function Home({ projects, repos }) {
                              transform hover:-translate-y-0.5 transition-all duration-300"
                   >
                     View Profile
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
