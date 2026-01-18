@@ -5,7 +5,6 @@ import Layout from "../components/layouts/Layout";
 import dynamic from "next/dynamic";
 
 const About = dynamic(() => import("../components/profile/About"));
-const Expertise = dynamic(() => import("../components/profile/Expertise"));
 const Values = dynamic(() => import("../components/profile/Values"));
 const ProfileCTA = dynamic(() => import("../components/profile/ProfileCTA"));
 
@@ -121,7 +120,6 @@ export default function Profile() {
         <div className="bg-slate-50 dark:bg-slate-800/50">
           <div className="px-4 sm:px-6 py-16 sm:py-20 space-y-16">
             <About />
-            <Expertise />
             <Values />
             <ProfileCTA whatsappLink={whatsappLink} />
           </div>

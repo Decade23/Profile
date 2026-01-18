@@ -22,7 +22,8 @@ const nextConfig = {
     ],
   },
   async headers() {
-    const securityHeaders = [
+    // Security headers for static assets (middleware handles dynamic routes)
+    const staticSecurityHeaders = [
       {
         key: "X-Frame-Options",
         value: "SAMEORIGIN",
@@ -39,33 +40,21 @@ const nextConfig = {
         key: "Permissions-Policy",
         value: "camera=(), microphone=(), geolocation=(), interest-cohort=()",
       },
-      {
-        key: "Content-Security-Policy",
-        value: [
-          "default-src 'self'",
-          "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://va.vercel-scripts.com",
-          "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
-          "img-src 'self' data: blob: https:",
-          "font-src 'self' https://fonts.gstatic.com data:",
-          "connect-src 'self' https://www.google-analytics.com https://api.openai.com https://*.vercel-insights.com https://vercel.live https://*.vercel.app",
-          "frame-src 'self' https://vercel.live",
-          "frame-ancestors 'self'",
-          "base-uri 'self'",
-          "form-action 'self'",
-          "upgrade-insecure-requests",
-        ].join("; "),
-      },
     ];
 
     return [
       {
-        source: "/:path*",
-        headers: securityHeaders,
+        source: "/_next/static/:path*",
+        headers: staticSecurityHeaders,
+      },
+      {
+        source: "/assets/:path*",
+        headers: staticSecurityHeaders,
       },
       {
         source: "/privacy",
         headers: [
-          ...securityHeaders,
+          ...staticSecurityHeaders,
           { key: "Cache-Control", value: "public, max-age=3600" },
         ],
       },
