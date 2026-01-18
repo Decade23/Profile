@@ -409,45 +409,49 @@ export default function Contact() {
                 Get in Touch
               </h2>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-6">
                 {contactMethods.map((method, index) => (
                   <a
                     key={index}
                     href={method.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group p-6 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
+                    className="group p-6 lg:p-8 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-xl hover:border-fuchsia-300 dark:hover:border-fuchsia-600 transition-all duration-300 hover:-translate-y-1"
                   >
-                    <div className="flex items-start gap-4">
+                    <div className="flex items-center gap-5">
                       <div
-                        className={`flex-shrink-0 w-12 h-12 rounded-xl ${method.color} text-white flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300`}
+                        className={`flex-shrink-0 w-14 h-14 lg:w-16 lg:h-16 rounded-2xl ${method.color} text-white flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300`}
                       >
-                        {method.icon}
+                        <span className="[&>svg]:w-7 [&>svg]:h-7 lg:[&>svg]:w-8 lg:[&>svg]:h-8">
+                          {method.icon}
+                        </span>
                       </div>
                       <div className="flex-1 min-w-0">
-                        <h3 className="text-lg font-bold text-slate-900 dark:text-white group-hover:text-fuchsia-600 dark:group-hover:text-fuchsia-400 transition-colors">
+                        <h3 className="text-lg lg:text-xl font-bold text-slate-900 dark:text-white group-hover:text-fuchsia-600 dark:group-hover:text-fuchsia-400 transition-colors">
                           {method.name}
                         </h3>
-                        <p className="text-fuchsia-600 dark:text-fuchsia-400 font-medium">
+                        <p className="text-fuchsia-600 dark:text-fuchsia-400 font-semibold text-base lg:text-lg truncate">
                           {method.value}
                         </p>
-                        <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">
+                        <p className="mt-1 text-sm lg:text-base text-slate-500 dark:text-slate-400">
                           {method.description}
                         </p>
                       </div>
-                      <svg
-                        className="w-5 h-5 text-slate-400 group-hover:text-fuchsia-500 group-hover:translate-x-1 transition-all"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                        strokeWidth={2}
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="M14 5l7 7m0 0l-7 7m7-7H3"
-                        />
-                      </svg>
+                      <div className="flex-shrink-0 w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-700 flex items-center justify-center group-hover:bg-fuchsia-100 dark:group-hover:bg-fuchsia-900/30 transition-colors">
+                        <svg
+                          className="w-5 h-5 text-slate-400 group-hover:text-fuchsia-500 group-hover:translate-x-0.5 transition-all"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                          strokeWidth={2}
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M14 5l7 7m0 0l-7 7m7-7H3"
+                          />
+                        </svg>
+                      </div>
                     </div>
                   </a>
                 ))}

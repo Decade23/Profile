@@ -7,6 +7,7 @@ export default function Document(props: DocumentProps) {
   return (
     <Html lang="en">
       <Head nonce={nonce}>
+        <link rel="icon" type="image/png" href="/favicon_df.png" />
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <link rel="icon" type="image/x-icon" href="/favicon.ico" />
       </Head>

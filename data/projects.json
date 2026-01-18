@@ -1,29 +1,49 @@
 [
   {
-    "label": "apartemen green pramuka",
+    "label": "Afra Training Platform",
+    "img": {
+      "src": "/assets/images/porto/afratraining.png",
+      "alt": "Afra Training"
+    },
+    "link": "https://afratraining.com/",
+    "shortDesc": "training",
+    "isActive": true
+  },
+  {
+    "label": "SertifikasiPro Platform",
+    "img": {
+      "src": "/assets/images/porto/sertifikasipro.png",
+      "alt": "SertifikasiPro"
+    },
+    "link": "https://www.sertifikasipro.com/",
+    "shortDesc": "certification",
+    "isActive": true
+  },
+  {
+    "label": "Apartemen Green Pramuka",
     "img": {
       "src": "/assets/images/porto/gpc.webp",
-      "alt": "apartemen green pramuka"
+      "alt": "Apartemen Green Pramuka"
     },
     "link": "https://gpc-landing-page-3oi5rc8e0-decade23.vercel.app",
     "shortDesc": "marketing",
     "isActive": true
   },
   {
-    "label": "koki apps website",
+    "label": "Koki Apps Website",
     "img": {
       "src": "/assets/images/porto/koki.png",
-      "alt": "koki apps"
+      "alt": "Koki Apps"
     },
     "link": "https://koki-machiato.vercel.app",
     "shortDesc": "marketing",
     "isActive": true
   },
   {
-    "label": "koki CMS website",
+    "label": "Koki CMS Website",
     "img": {
       "src": "/assets/images/porto/koki.png",
-      "alt": "koki CMS website"
+      "alt": "Koki CMS Website"
     },
     "link": "",
     "shortDesc": "cms",
@@ -33,7 +53,7 @@
     "label": "Palembang Kito CMS Website",
     "img": {
       "src": "/assets/images/porto/plb_kito.jpeg",
-      "alt": "palembang kito"
+      "alt": "Palembang Kito"
     },
     "link": "",
     "shortDesc": "cms",
@@ -43,7 +63,7 @@
     "label": "Ellen May CMS Website",
     "img": {
       "src": "/assets/images/porto/emi.png",
-      "alt": "ellen may institude"
+      "alt": "Ellen May Institute"
     },
     "link": "",
     "shortDesc": "cms",

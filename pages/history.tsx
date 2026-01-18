@@ -70,10 +70,10 @@ export default function History({ workHistory, stats }) {
                       }`}
                     >
                       {/* Timeline Bullet - Improved Design */}
-                      <div className="absolute left-0 sm:left-1/2 sm:-translate-x-1/2 z-10">
+                      <div className="absolute left-0 sm:left-1/2 sm:-translate-x-1/2 z-10 -top-1">
                         {/* Year Badge */}
                         <div
-                          className={`relative flex items-center justify-center w-10 h-10 rounded-xl shadow-lg transition-all duration-300 ${
+                          className={`relative flex items-center justify-center w-12 h-12 rounded-xl shadow-lg transition-all duration-300 ${
                             job.isCurrent
                               ? "bg-gradient-to-br from-fuchsia-500 to-violet-600"
                               : "bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-600"
@@ -119,7 +119,7 @@ export default function History({ workHistory, stats }) {
 
                       {/* Content */}
                       <div
-                        className={`flex-1 ml-14 sm:ml-0 ${
+                        className={`flex-1 ml-16 sm:ml-0 ${
                           index % 2 === 0 ? "sm:pr-16" : "sm:pl-16"
                         }`}
                       >
@@ -472,13 +472,31 @@ export async function getStaticProps() {
       ],
       technologies: ["Excel", "VBA", "SQL", "Reporting Tools"],
     },
+    {
+      company: "CV. Anugrah Pratama",
+      logo: "/assets/images/porto/default-company.png",
+      position: "Admin & IT Support",
+      period: "2011 - 2012",
+      location: "Jakarta, Indonesia",
+      type: "fulltime",
+      isCurrent: false,
+      description:
+        "Started professional career handling administrative tasks and IT support for a local company.",
+      achievements: [
+        "Handled administrative documentation and filing",
+        "Provided basic IT support and troubleshooting",
+        "Managed office equipment maintenance",
+        "First exposure to professional work environment",
+      ],
+      technologies: ["Windows", "Microsoft Office", "Basic Networking"],
+    },
   ];
 
   const stats = [
-    { label: "Years of Experience", value: "13+" },
+    { label: "Years of Experience", value: "14+" },
+    { label: "Started Working", value: "2011" },
+    { label: "Companies Worked", value: "8" },
     { label: "Projects Completed", value: "50+" },
-    { label: "Companies Worked", value: "7" },
-    { label: "Happy Clients", value: "20+" },
   ];
 
   return {
