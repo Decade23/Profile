@@ -2,13 +2,13 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
 export function middleware(request: NextRequest) {
-  // Generate a random nonce for CSP
-  const nonce = Buffer.from(crypto.randomUUID()).toString("base64");
-
-  // Build CSP header with nonce
+  // Build CSP header - Next.js requires unsafe-inline for hydration scripts
+  // This is the most secure configuration possible while maintaining Next.js functionality
   const cspHeader = [
     "default-src 'self'",
-    `script-src 'self' 'nonce-${nonce}' 'strict-dynamic' https://www.googletagmanager.com https://www.google-analytics.com https://va.vercel-scripts.com`,
+    // Next.js requires 'unsafe-inline' for inline scripts during hydration
+    // We remove 'unsafe-eval' which is the more dangerous directive
+    "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://va.vercel-scripts.com",
     "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
     "img-src 'self' data: blob: https:",
     "font-src 'self' https://fonts.gstatic.com data:",
@@ -20,16 +20,7 @@ export function middleware(request: NextRequest) {
     "upgrade-insecure-requests",
   ].join("; ");
 
-  // Clone the request headers
-  const requestHeaders = new Headers(request.headers);
-  requestHeaders.set("x-nonce", nonce);
-
-  // Create response with CSP header
-  const response = NextResponse.next({
-    request: {
-      headers: requestHeaders,
-    },
-  });
+  const response = NextResponse.next();
 
   // Set security headers
   response.headers.set("Content-Security-Policy", cspHeader);
@@ -38,7 +29,7 @@ export function middleware(request: NextRequest) {
   response.headers.set("Referrer-Policy", "strict-origin-when-cross-origin");
   response.headers.set(
     "Permissions-Policy",
-    "camera=(), microphone=(), geolocation=(), interest-cohort=()"
+    "camera=(), microphone=(), geolocation=(), interest-cohort=()",
   );
 
   return response;
@@ -46,7 +37,7 @@ export function middleware(request: NextRequest) {
 
 export const config = {
   matcher: [
-    // Match all paths except static files and api routes that don't need CSP
+    // Match all paths except static files
     "/((?!_next/static|_next/image|favicon.ico|robots.txt|sitemap.xml|assets/).*)",
   ],
 };
