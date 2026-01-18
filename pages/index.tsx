@@ -357,8 +357,8 @@ export async function getStaticProps() {
   const projectsFilePath = path.join(process.cwd(), "data", "projects.json");
   const reposFilePath = path.join(process.cwd(), "data", "repos.json");
 
-  const projectsJson = await fs.readFile(projectsFilePath);
-  const reposJson = await fs.readFile(reposFilePath);
+  const projectsJson = await fs.readFile(projectsFilePath, "utf-8");
+  const reposJson = await fs.readFile(reposFilePath, "utf-8");
 
   const projects = JSON.parse(projectsJson);
   const repos = JSON.parse(reposJson);
