@@ -97,31 +97,31 @@ export default function ChatBot() {
   };
 
   const quickQuestions = [
-    "What's your tech stack?",
-    "Are you available for hire?",
-    "What are your rates?",
-    "How can I contact you?",
+    "Tech stack?",
+    "Available for hire?",
+    "Rates?",
+    "Contact?",
   ];
 
   return (
     <>
-      {/* Chat Widget Container - bottom-24 on mobile to avoid navbar overlap, bottom-6 on desktop */}
+      {/* Chat Widget Container */}
       <div className="fixed bottom-24 right-4 sm:bottom-6 sm:right-6 z-40">
         {/* Chat Window */}
         <div
-          className={`fixed inset-0 sm:inset-auto sm:bottom-[88px] sm:right-6 w-full h-full sm:w-96 sm:h-[600px] sm:max-h-[80vh] transition-all duration-300 transform origin-bottom-right ${
+          className={`fixed left-2 right-2 bottom-20 top-2 sm:inset-auto sm:bottom-[88px] sm:right-6 sm:left-auto sm:top-auto sm:w-96 sm:h-[600px] sm:max-h-[80vh] transition-all duration-300 transform origin-bottom-right ${
             isOpen
               ? "scale-100 opacity-100 pointer-events-auto"
               : "scale-95 opacity-0 pointer-events-none"
           }`}
         >
-          <div className="bg-white dark:bg-slate-900 sm:rounded-2xl shadow-2xl border border-slate-200 dark:border-slate-700 overflow-hidden flex flex-col h-full">
+          <div className="bg-white dark:bg-slate-900 rounded-2xl shadow-2xl border border-slate-200 dark:border-slate-700 overflow-hidden flex flex-col h-full">
             {/* Header */}
-            <div className="bg-gradient-to-r from-fuchsia-500 to-violet-500 p-4 flex items-center gap-3 flex-shrink-0">
+            <div className="bg-gradient-to-r from-fuchsia-500 to-violet-500 p-3 sm:p-4 flex items-center gap-3 flex-shrink-0">
               <div className="relative">
-                <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">
+                <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/20 flex items-center justify-center">
                   <svg
-                    className="w-6 h-6 text-white"
+                    className="w-5 h-5 sm:w-6 sm:h-6 text-white"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -134,17 +134,20 @@ export default function ChatBot() {
                     />
                   </svg>
                 </div>
-                <span className="absolute bottom-0 right-0 w-3 h-3 bg-emerald-400 rounded-full border-2 border-white" />
+                <span className="absolute bottom-0 right-0 w-2.5 h-2.5 sm:w-3 sm:h-3 bg-emerald-400 rounded-full border-2 border-white" />
               </div>
-              <div className="flex-1">
-                <h3 className="text-white font-bold">Dedi's Assistant</h3>
-                <p className="text-white/80 text-sm">
+              <div className="flex-1 min-w-0">
+                <h3 className="text-white font-bold text-sm sm:text-base truncate">
+                  Dedi&apos;s Assistant
+                </h3>
+                <p className="text-white/80 text-xs sm:text-sm">
                   {isLoading ? "Typing..." : "Online"}
                 </p>
               </div>
               <button
                 onClick={() => setIsOpen(false)}
-                className="p-2 hover:bg-white/10 rounded-lg transition-colors"
+                className="p-2 hover:bg-white/10 active:bg-white/20 rounded-lg transition-colors"
+                aria-label="Close chat"
               >
                 <svg
                   className="w-5 h-5 text-white"
@@ -163,7 +166,7 @@ export default function ChatBot() {
             </div>
 
             {/* Messages */}
-            <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-slate-50 dark:bg-slate-800/50">
+            <div className="flex-1 overflow-y-auto p-3 sm:p-4 space-y-3 sm:space-y-4 bg-slate-50 dark:bg-slate-800/50">
               {messages.map((message, index) => (
                 <div
                   key={index}
@@ -172,13 +175,13 @@ export default function ChatBot() {
                   }`}
                 >
                   <div
-                    className={`max-w-[85%] p-3 rounded-2xl ${
+                    className={`max-w-[85%] p-2.5 sm:p-3 rounded-2xl ${
                       message.role === "user"
                         ? "bg-fuchsia-100 dark:bg-fuchsia-900/40 text-fuchsia-900 dark:text-fuchsia-100 rounded-br-md border border-fuchsia-200 dark:border-fuchsia-800"
                         : "bg-white dark:bg-slate-800 text-slate-900 dark:text-white border border-slate-200 dark:border-slate-700 rounded-bl-md"
                     }`}
                   >
-                    <div className="prose prose-sm dark:prose-invert max-w-none">
+                    <div className="prose prose-sm dark:prose-invert max-w-none text-sm">
                       <ReactMarkdown
                         components={{
                           a: ({ node, ...props }) => (
@@ -219,13 +222,13 @@ export default function ChatBot() {
               <div ref={messagesEndRef} />
             </div>
 
-            {/* Quick Questions (only show if no messages yet) */}
+            {/* Quick Questions (only show if greeting message only) */}
             {messages.length === 1 && (
-              <div className="p-3 border-t border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 flex-shrink-0">
-                <p className="text-xs text-slate-500 dark:text-slate-400 mb-2">
+              <div className="px-3 py-2 border-t border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 flex-shrink-0">
+                <p className="text-[10px] sm:text-xs text-slate-500 dark:text-slate-400 mb-1.5">
                   Quick questions:
                 </p>
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-1.5">
                   {quickQuestions.map((question, index) => (
                     <button
                       key={index}
@@ -233,7 +236,7 @@ export default function ChatBot() {
                         setInput(question);
                         setTimeout(() => sendMessage(), 100);
                       }}
-                      className="px-3 py-1.5 text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors"
+                      className="px-2.5 py-1 text-[11px] sm:text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full hover:bg-slate-200 dark:hover:bg-slate-700 active:scale-95 transition-all"
                     >
                       {question}
                     </button>
@@ -243,7 +246,7 @@ export default function ChatBot() {
             )}
 
             {/* Input */}
-            <div className="p-3 border-t border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 flex-shrink-0">
+            <div className="p-2.5 sm:p-3 border-t border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 flex-shrink-0">
               <div className="flex gap-2">
                 <input
                   ref={inputRef}
@@ -253,12 +256,12 @@ export default function ChatBot() {
                   onKeyPress={handleKeyPress}
                   placeholder="Type your message..."
                   disabled={isLoading}
-                  className="flex-1 px-4 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 border-0 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-fuchsia-500 text-sm disabled:opacity-50"
+                  className="flex-1 px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 border-0 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-fuchsia-500 text-sm disabled:opacity-50"
                 />
                 <button
                   onClick={sendMessage}
                   disabled={!input.trim() || isLoading}
-                  className="p-2.5 bg-fuchsia-500 hover:bg-fuchsia-600 disabled:bg-slate-300 dark:disabled:bg-slate-700 text-white rounded-xl transition-colors disabled:cursor-not-allowed"
+                  className="p-2 sm:p-2.5 bg-fuchsia-500 hover:bg-fuchsia-600 active:bg-fuchsia-700 disabled:bg-slate-300 dark:disabled:bg-slate-700 text-white rounded-xl transition-colors disabled:cursor-not-allowed"
                 >
                   <svg
                     className="w-5 h-5"
@@ -275,22 +278,22 @@ export default function ChatBot() {
                   </svg>
                 </button>
               </div>
-              <p className="mt-2 text-[10px] text-slate-400 dark:text-slate-500 text-center">
+              <p className="mt-1.5 sm:mt-2 text-[9px] sm:text-[10px] text-slate-400 dark:text-slate-500 text-center">
                 Powered by AI •{" "}
                 <a
                   href="https://wa.me/6285693380123?text=Hi%20Dedi,%20I%20have%20a%20question%20from%20your%20website."
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1 text-emerald-600 dark:text-emerald-400 hover:underline font-medium"
+                  className="inline-flex items-center gap-0.5 text-emerald-600 dark:text-emerald-400 hover:underline font-medium"
                 >
                   <svg
-                    className="w-3 h-3"
+                    className="w-2.5 h-2.5 sm:w-3 sm:h-3"
                     fill="currentColor"
                     viewBox="0 0 24 24"
                   >
                     <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
                   </svg>
-                  Chat via WhatsApp
+                  WhatsApp
                 </a>
               </p>
             </div>
@@ -303,7 +306,7 @@ export default function ChatBot() {
           className={`w-14 h-14 rounded-full shadow-lg flex items-center justify-center transition-all duration-300 ${
             isOpen
               ? "bg-slate-900 dark:bg-slate-700 opacity-0 scale-0"
-              : "bg-gradient-to-r from-fuchsia-500 to-violet-500 hover:shadow-xl hover:scale-105"
+              : "bg-gradient-to-r from-fuchsia-500 to-violet-500 hover:shadow-xl hover:scale-105 active:scale-95"
           }`}
           aria-label="Toggle chat"
         >
