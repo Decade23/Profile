@@ -19,7 +19,7 @@ module.exports = {
         },
       },
       fontFamily: {
-        sans: ["Inter", "system-ui", "sans-serif"],
+        sans: ["var(--font-inter)", "ui-sans-serif", "system-ui", "sans-serif"],
       },
       colors: {
         main: "#d946ef",

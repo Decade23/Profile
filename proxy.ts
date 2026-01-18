@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   // Build CSP header - Next.js requires unsafe-inline for hydration scripts
   // This is the most secure configuration possible while maintaining Next.js functionality
   const cspHeader = [

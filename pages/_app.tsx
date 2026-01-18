@@ -2,10 +2,18 @@ import type { AppProps } from "next/app";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
 import NProgress from "nprogress";
+import { Inter } from "next/font/google";
 import "../styles/globals.css";
 import { Analytics } from "@vercel/analytics/react";
 import ErrorBoundary from "../components/ErrorBoundary";
 import { ThemeProvider } from "next-themes";
+
+// Optimized font loading with next/font
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-inter",
+});
 
 // NProgress configuration
 NProgress.configure({
@@ -47,8 +55,10 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
       <ErrorBoundary>
-        <Component {...pageProps} />
-        <Analytics />
+        <main className={`${inter.variable} font-sans`}>
+          <Component {...pageProps} />
+          <Analytics />
+        </main>
       </ErrorBoundary>
     </ThemeProvider>
   );

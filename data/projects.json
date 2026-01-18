@@ -1,15 +1,5 @@
 [
   {
-    "label": "Afra Training Platform",
-    "img": {
-      "src": "/assets/images/porto/afratraining.png",
-      "alt": "Afra Training"
-    },
-    "link": "https://afratraining.com/",
-    "shortDesc": "training",
-    "isActive": true
-  },
-  {
     "label": "SertifikasiPro Platform",
     "img": {
       "src": "/assets/images/porto/sertifikasipro.png",
@@ -17,6 +7,16 @@
     },
     "link": "https://www.sertifikasipro.com/",
     "shortDesc": "certification",
+    "isActive": true
+  },
+  {
+    "label": "Afra Training Platform",
+    "img": {
+      "src": "/assets/images/porto/afratraining.png",
+      "alt": "Afra Training"
+    },
+    "link": "https://afratraining.com/",
+    "shortDesc": "training",
     "isActive": true
   },
   {
