@@ -1,6 +1,4 @@
 import Link from "next/link";
-import { useState } from "react";
-import reposData from "../data/repos.json";
 
 interface RepoItem {
   name: string;
@@ -29,8 +27,7 @@ const repoIcons: Record<string, React.ReactNode> = {
   ),
 };
 
-export default function Repo() {
-  const [repos] = useState<RepoItem[]>(reposData);
+export default function Repo({ repos }: { repos: RepoItem[] }) {
   const activeRepos = repos.filter((r) => r.isActive);
 
   return (

@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react";
+import ReactMarkdown from "react-markdown";
 
 interface Message {
   role: "user" | "assistant";
@@ -105,18 +106,18 @@ export default function ChatBot() {
   return (
     <>
       {/* Chat Widget Container */}
-      <div className="fixed bottom-20 right-4 sm:bottom-6 sm:right-6 z-50">
+      <div className="fixed bottom-6 right-6 z-50">
         {/* Chat Window */}
         <div
-          className={`absolute bottom-16 right-0 w-[calc(100vw-2rem)] sm:w-96 transition-all duration-300 transform origin-bottom-right ${
+          className={`fixed inset-0 sm:inset-auto sm:bottom-24 sm:right-6 w-full h-full sm:w-96 sm:h-[600px] sm:max-h-[80vh] transition-all duration-300 transform origin-bottom-right ${
             isOpen
               ? "scale-100 opacity-100 pointer-events-auto"
               : "scale-95 opacity-0 pointer-events-none"
           }`}
         >
-          <div className="bg-white dark:bg-slate-900 rounded-2xl shadow-2xl border border-slate-200 dark:border-slate-700 overflow-hidden flex flex-col h-[70vh] sm:h-[500px]">
+          <div className="bg-white dark:bg-slate-900 sm:rounded-2xl shadow-2xl border border-slate-200 dark:border-slate-700 overflow-hidden flex flex-col h-full">
             {/* Header */}
-            <div className="bg-gradient-to-r from-fuchsia-500 to-violet-500 p-4 flex items-center gap-3">
+            <div className="bg-gradient-to-r from-fuchsia-500 to-violet-500 p-4 flex items-center gap-3 flex-shrink-0">
               <div className="relative">
                 <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">
                   <svg
@@ -177,9 +178,21 @@ export default function ChatBot() {
                         : "bg-white dark:bg-slate-800 text-slate-900 dark:text-white border border-slate-200 dark:border-slate-700 rounded-bl-md"
                     }`}
                   >
-                    <p className="text-sm whitespace-pre-wrap leading-relaxed">
-                      {message.content}
-                    </p>
+                    <div className="prose prose-sm dark:prose-invert max-w-none">
+                      <ReactMarkdown
+                        components={{
+                          a: ({ node, ...props }) => (
+                            <a
+                              {...props}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            />
+                          ),
+                        }}
+                      >
+                        {message.content}
+                      </ReactMarkdown>
+                    </div>
                   </div>
                 </div>
               ))}
@@ -208,7 +221,7 @@ export default function ChatBot() {
 
             {/* Quick Questions (only show if no messages yet) */}
             {messages.length === 1 && (
-              <div className="p-3 border-t border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900">
+              <div className="p-3 border-t border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 flex-shrink-0">
                 <p className="text-xs text-slate-500 dark:text-slate-400 mb-2">
                   Quick questions:
                 </p>
@@ -230,7 +243,7 @@ export default function ChatBot() {
             )}
 
             {/* Input */}
-            <div className="p-3 border-t border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900">
+            <div className="p-3 border-t border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 flex-shrink-0">
               <div className="flex gap-2">
                 <input
                   ref={inputRef}
@@ -289,39 +302,24 @@ export default function ChatBot() {
           onClick={() => setIsOpen(!isOpen)}
           className={`w-14 h-14 rounded-full shadow-lg flex items-center justify-center transition-all duration-300 ${
             isOpen
-              ? "bg-slate-900 dark:bg-slate-700 rotate-0"
+              ? "bg-slate-900 dark:bg-slate-700 opacity-0 scale-0"
               : "bg-gradient-to-r from-fuchsia-500 to-violet-500 hover:shadow-xl hover:scale-105"
           }`}
+          aria-label="Toggle chat"
         >
-          {isOpen ? (
-            <svg
-              className="w-6 h-6 text-white"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              strokeWidth={2}
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M6 18L18 6M6 6l12 12"
-              />
-            </svg>
-          ) : (
-            <svg
-              className="w-6 h-6 text-white"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              strokeWidth={2}
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"
-              />
-            </svg>
-          )}
+          <svg
+            className="w-6 h-6 text-white"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            strokeWidth={2}
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"
+            />
+          </svg>
 
           {/* Notification dot */}
           {!isOpen && !hasGreeted && (

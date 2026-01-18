@@ -86,7 +86,7 @@ const faqs = [
   {
     question: "Do you work with international clients?",
     answer:
-      "Yes! I work with clients globally. I'm fluent in English and Indonesian, and I'm comfortable working across different time zones.",
+      "Yes! I have experience working with global clients. While English is not my primary language, I have proficient communication skills for technical discussions and project management to ensure project success.",
   },
   {
     question: "What is your availability?",

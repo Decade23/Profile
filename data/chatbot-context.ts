@@ -56,11 +56,38 @@ export const chatbotContext = {
 
   // Technical Skills
   skills: {
-    frontend: ["React", "Next.js", "Vue.js", "Nuxt.js", "Tailwind CSS", "TypeScript"],
-    backend: ["Node.js", "Express.js", "Laravel", "Golang", "REST API", "GraphQL"],
+    frontend: [
+      "React",
+      "Next.js",
+      "Vue.js",
+      "Nuxt.js",
+      "Tailwind CSS",
+      "TypeScript",
+    ],
+    backend: [
+      "Node.js",
+      "Express.js",
+      "Laravel",
+      "Golang",
+      "REST API",
+      "GraphQL",
+    ],
     database: ["MySQL", "PostgreSQL", "MongoDB", "Redis"],
-    cloud: ["AWS", "Google Cloud Platform", "DigitalOcean", "VPS", "Docker", "Git"],
-    other: ["System Architecture", "Team Leadership", "Code Review", "CI/CD", "Agile/Scrum"],
+    cloud: [
+      "AWS",
+      "Google Cloud Platform",
+      "DigitalOcean",
+      "VPS",
+      "Docker",
+      "Git",
+    ],
+    other: [
+      "System Architecture",
+      "Team Leadership",
+      "Code Review",
+      "CI/CD",
+      "Agile/Scrum",
+    ],
   },
 
   // Project Preferences
@@ -85,17 +112,20 @@ export const chatbotContext = {
     {
       name: "Adira Finance",
       type: "Enterprise System",
-      description: "Internal systems and customer-facing applications for major financial services company",
+      description:
+        "Internal systems and customer-facing applications for major financial services company",
     },
     {
       name: "Green Pramuka City",
       type: "Marketing & Property Management",
-      description: "Marketing website and tenant management portal for Jakarta's largest apartment complex",
+      description:
+        "Marketing website and tenant management portal for Jakarta's largest apartment complex",
     },
     {
       name: "Koki Apps",
       type: "Food Delivery Platform",
-      description: "Full-stack food delivery platform connecting home cooks with customers",
+      description:
+        "Full-stack food delivery platform connecting home cooks with customers",
     },
   ],
 
@@ -103,23 +133,28 @@ export const chatbotContext = {
   faqs: [
     {
       question: "What is your tech stack?",
-      answer: "I specialize in React, Next.js, Vue.js for frontend, and Laravel, Node.js, Golang for backend. I also work with MySQL, PostgreSQL, MongoDB for databases, and AWS, GCP, DigitalOcean for cloud infrastructure.",
+      answer:
+        "I specialize in React, Next.js, Vue.js for frontend, and Laravel, Node.js, Golang for backend. I also work with MySQL, PostgreSQL, MongoDB for databases, and AWS, GCP, DigitalOcean for cloud infrastructure.",
     },
     {
       question: "Are you available for hire?",
-      answer: "Yes! I'm currently available for full-time positions, freelance projects, and technical consulting. Feel free to reach out via WhatsApp for a quick chat.",
+      answer:
+        "Yes! I'm currently available for full-time positions, freelance projects, and technical consulting. Feel free to reach out via WhatsApp for a quick chat.",
     },
     {
       question: "What is your rate?",
-      answer: "My rates start from Rp 500,000/hour for consulting and Rp 10,000,000 for project-based work. The final price depends on project complexity. Let's discuss your specific needs!",
+      answer:
+        "My rates start from Rp 500,000/hour for consulting and Rp 10,000,000 for project-based work. The final price depends on project complexity. Let's discuss your specific needs!",
     },
     {
       question: "How long does a project take?",
-      answer: "It depends on the scope. A landing page takes 3-5 days, MVP 2-4 weeks, and full web applications 1-3 months. I can provide a more accurate estimate after understanding your requirements.",
+      answer:
+        "It depends on the scope. A landing page takes 3-5 days, MVP 2-4 weeks, and full web applications 1-3 months. I can provide a more accurate estimate after understanding your requirements.",
     },
     {
       question: "Do you work remotely?",
-      answer: "Yes, I'm fully remote-friendly and have experience working with international clients across different timezones. I'm based in Jakarta (GMT+7) but flexible with meeting times.",
+      answer:
+        "Yes, I'm fully remote-friendly and have experience working with international clients across different timezones. I'm based in Jakarta (GMT+7) but flexible with meeting times.",
     },
   ],
 };
@@ -135,10 +170,10 @@ export const systemPrompt = `You are Dedi's friendly AI assistant on his portfol
 - Status: ${chatbotContext.availability.statusText}
 
 ## Contact Information:
-- WhatsApp: ${chatbotContext.contact.whatsapp} (fastest way to reach)
-- Email: ${chatbotContext.contact.email}
-- LinkedIn: ${chatbotContext.contact.linkedin}
-- GitHub: ${chatbotContext.contact.github}
+- WhatsApp: [${chatbotContext.contact.whatsapp}](${chatbotContext.contact.whatsappLink}) (fastest way to reach)
+- Email: [${chatbotContext.contact.email}](mailto:${chatbotContext.contact.email})
+- LinkedIn: [${chatbotContext.contact.linkedin}](${chatbotContext.contact.linkedin})
+- GitHub: [${chatbotContext.contact.github}](${chatbotContext.contact.github})
 
 ## Technical Skills:
 - Frontend: ${chatbotContext.skills.frontend.join(", ")}
@@ -172,6 +207,7 @@ export const systemPrompt = `You are Dedi's friendly AI assistant on his portfol
 6. Use casual but professional Indonesian or English based on the visitor's language
 7. When someone wants to book a meeting or discuss a project, provide the WhatsApp link
 8. Don't make up information - stick to what you know about Dedi
+9. **CRITICAL**: When providing contact info (WhatsApp, Email, LinkedIn, GitHub), you MUST format it as a clickable Markdown link. For example: \`[Dedi's LinkedIn](${chatbotContext.contact.linkedin})\`.
 
 ## Response Format:
 - Use short paragraphs

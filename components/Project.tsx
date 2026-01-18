@@ -1,11 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
-import projectsData from "../data/projects.json";
 import type { ProjectData } from "../types";
 
-export default function Project() {
-  const [projects] = useState<ProjectData[]>(projectsData);
+export default function Project({ projects }: { projects: ProjectData[] }) {
   const activeProjects = projects.filter((p) => p.isActive);
 
   return (

@@ -3,188 +3,7 @@ import Link from "next/link";
 import { useState } from "react";
 import Layout from "../components/layouts/Layout";
 
-interface WorkExperience {
-  company: string;
-  logo: string;
-  position: string;
-  period: string;
-  location: string;
-  type: "fulltime" | "freelance" | "contract";
-  isCurrent: boolean;
-  description: string;
-  achievements: string[];
-  technologies: string[];
-}
-
-const workHistory: WorkExperience[] = [
-  {
-    company: "Bank Tabungan Negara (BTN)",
-    logo: "/assets/images/porto/btn.png",
-    position: "Tech Lead",
-    period: "2024 - Present",
-    location: "Jakarta, Indonesia",
-    type: "fulltime",
-    isCurrent: true,
-    description:
-      "Leading technology initiatives and managing squad for mobile banking and digital products at one of Indonesia's largest state-owned banks.",
-    achievements: [
-      "Manage Squad with 5 personnel (Android, iOS, Web Backend, SQA)",
-      "Handle Project Bale (Mobile Banking), Virtual Expo and other digital products",
-      "Architecting Microservices and Monolithic Architecture solutions",
-      "Implementing best practices for software development lifecycle",
-    ],
-    technologies: [
-      "Java Spring Boot",
-      "React",
-      "Kotlin",
-      "Swift",
-      "PostgreSQL",
-      "Redis",
-      "Kubernetes",
-    ],
-  },
-  {
-    company: "PT Adira Dinamika Multi Finance",
-    logo: "/assets/images/porto/adira.png",
-    position: "Senior Fullstack Developer",
-    period: "2021 - 2024",
-    location: "Jakarta, Indonesia",
-    type: "fulltime",
-    isCurrent: false,
-    description:
-      "Developed internal applications using modern tech stack for one of Indonesia's largest financial services companies.",
-    achievements: [
-      "Built internal applications using Laravel, NextJS, and ReactJS",
-      "Implemented Microservices and Monolithic Architecture",
-      "Integrated with MySQL, MongoDB for data management",
-      "Deployed applications using GitLab CI/CD and AWS",
-    ],
-    technologies: [
-      "Laravel",
-      "NextJS",
-      "ReactJS",
-      "MySQL",
-      "MongoDB",
-      "GitLab",
-      "AWS",
-    ],
-  },
-  {
-    company: "PT Koki Teknologi Indonesia",
-    logo: "/assets/images/porto/koki.png",
-    position: "Web / Fullstack Developer",
-    period: "2020 - 2021",
-    location: "Jakarta, Indonesia",
-    type: "fulltime",
-    isCurrent: false,
-    description:
-      "Developed internal applications for food delivery platform connecting home cooks with customers.",
-    achievements: [
-      "Built internal applications using Laravel, NextJS, ReactJS",
-      "Implemented Monolithic and Microservices Architecture",
-      "Integrated with MySQL, MongoDB databases",
-      "Deployed using GitLab and AWS infrastructure",
-    ],
-    technologies: [
-      "Laravel",
-      "NextJS",
-      "ReactJS",
-      "Golang",
-      "MySQL",
-      "MongoDB",
-      "GitLab",
-      "AWS",
-    ],
-  },
-  {
-    company: "Ellen May Institute",
-    logo: "/assets/images/porto/emi.png",
-    position: "Backend Programmer",
-    period: "2019 - 2020",
-    location: "Jakarta, Indonesia",
-    type: "fulltime",
-    isCurrent: false,
-    description:
-      "Developed internal applications for Indonesia's prominent stock market school using various integrations.",
-    achievements: [
-      "Built internal applications using Laravel framework",
-      "Integrated with InfusionSoft, ClickFunnels, Firebase",
-      "Implemented Damcorp Whatsapp and Pepipost Email integration",
-      "Developed RESTful APIs with Monolithic Architecture",
-    ],
-    technologies: [
-      "Laravel",
-      "Golang",
-      "MySQL",
-      "GitLab",
-      "AWS",
-      "Firebase",
-      "REST API",
-    ],
-  },
-  {
-    company: "PT Indonusa Telemedia (Transvision)",
-    logo: "/assets/images/porto/transvision.png",
-    position: "Senior MIS Database & Automation System",
-    period: "2015 - 2019",
-    location: "Jakarta, Indonesia",
-    type: "fulltime",
-    isCurrent: false,
-    description:
-      "Managed database systems and developed internal applications for Indonesia's leading pay-TV provider.",
-    achievements: [
-      "Built internal applications for daily operations and reporting",
-      "Maintained database from Bank Mega for telesales team",
-      "Maintained internal servers and infrastructure",
-      "Provided MySQL/Database training to team members",
-    ],
-    technologies: ["PHP", "MySQL", "VBA", "Excel", "SQL Server"],
-  },
-  {
-    company: "PT Proxsis",
-    logo: "/assets/images/porto/proxsis.png",
-    position: "IT Support",
-    period: "2013 - 2015",
-    location: "Jakarta, Indonesia",
-    type: "fulltime",
-    isCurrent: false,
-    description:
-      "Provided IT support and maintenance for enterprise consulting company.",
-    achievements: [
-      "Maintained PCs and resolved software troubleshooting",
-      "Handled OS reinstallation, printer, and network issues",
-      "Maintained email and internet services",
-      "Managed provider payments and subscriptions",
-    ],
-    technologies: ["Windows", "Network", "Hardware", "Email Systems"],
-  },
-  {
-    company: "PT ACA (Asuransi Central Asia)",
-    logo: "/assets/images/porto/aca.jpg",
-    position: "MIS / Admin Support",
-    period: "2012 - 2013",
-    location: "Jakarta, Indonesia",
-    type: "fulltime",
-    isCurrent: false,
-    description:
-      "Created reports and provided system training for telesales operations at major insurance company.",
-    achievements: [
-      "Created daily, weekly, monthly, and yearly telesales reports",
-      "Developed commission reports for telesales team",
-      "Provided system training to new telesales members",
-    ],
-    technologies: ["Excel", "VBA", "SQL", "Reporting Tools"],
-  },
-];
-
-const stats = [
-  { label: "Years of Experience", value: "13+" },
-  { label: "Projects Completed", value: "50+" },
-  { label: "Companies Worked", value: "7" },
-  { label: "Happy Clients", value: "20+" },
-];
-
-export default function History() {
+export default function History({ workHistory, stats }) {
   const [expandedIndex, setExpandedIndex] = useState<number | null>(0);
 
   return (
@@ -381,7 +200,7 @@ export default function History() {
                           <div
                             className={`overflow-hidden transition-all duration-300 ${
                               expandedIndex === index
-                                ? "max-h-[500px] opacity-100 mt-4"
+                                ? "max-h-[1000px] opacity-100 mt-4"
                                 : "max-h-0 opacity-0"
                             }`}
                           >
@@ -491,4 +310,181 @@ export default function History() {
       </section>
     </Layout>
   );
+}
+
+export async function getStaticProps() {
+  const workHistory = [
+    {
+      company: "Bank Tabungan Negara (BTN)",
+      logo: "/assets/images/porto/btn.png",
+      position: "Tech Lead",
+      period: "2024 - Present",
+      location: "Jakarta, Indonesia",
+      type: "fulltime",
+      isCurrent: true,
+      description:
+        "Leading technology initiatives and managing squad for mobile banking and digital products at one of Indonesia's largest state-owned banks.",
+      achievements: [
+        "Manage Squad with 5 personnel (Android, iOS, Web Backend, SQA)",
+        "Handle Project Bale (Mobile Banking), Virtual Expo and other digital products",
+        "Architecting Microservices and Monolithic Architecture solutions",
+        "Implementing best practices for software development lifecycle",
+      ],
+      technologies: [
+        "Java Spring Boot",
+        "React",
+        "Kotlin",
+        "Swift",
+        "PostgreSQL",
+        "Redis",
+        "Kubernetes",
+      ],
+    },
+    {
+      company: "PT Adira Dinamika Multi Finance",
+      logo: "/assets/images/porto/adira.png",
+      position: "Senior Fullstack Developer",
+      period: "2021 - 2024",
+      location: "Jakarta, Indonesia",
+      type: "fulltime",
+      isCurrent: false,
+      description:
+        "Developed internal applications using modern tech stack for one of Indonesia's largest financial services companies.",
+      achievements: [
+        "Built internal applications using Laravel, NextJS, and ReactJS",
+        "Implemented Microservices and Monolithic Architecture",
+        "Integrated with MySQL, MongoDB for data management",
+        "Deployed applications using GitLab CI/CD and AWS",
+      ],
+      technologies: [
+        "Laravel",
+        "NextJS",
+        "ReactJS",
+        "MySQL",
+        "MongoDB",
+        "GitLab",
+        "AWS",
+      ],
+    },
+    {
+      company: "PT Koki Teknologi Indonesia",
+      logo: "/assets/images/porto/koki.png",
+      position: "Web / Fullstack Developer",
+      period: "2020 - 2021",
+      location: "Jakarta, Indonesia",
+      type: "fulltime",
+      isCurrent: false,
+      description:
+        "Developed internal applications for food delivery platform connecting home cooks with customers.",
+      achievements: [
+        "Built internal applications using Laravel, NextJS, ReactJS",
+        "Implemented Monolithic and Microservices Architecture",
+        "Integrated with MySQL, MongoDB databases",
+        "Deployed using GitLab and AWS infrastructure",
+      ],
+      technologies: [
+        "Laravel",
+        "NextJS",
+        "ReactJS",
+        "Golang",
+        "MySQL",
+        "MongoDB",
+        "GitLab",
+        "AWS",
+      ],
+    },
+    {
+      company: "Ellen May Institute",
+      logo: "/assets/images/porto/emi.png",
+      position: "Backend Programmer",
+      period: "2019 - 2020",
+      location: "Jakarta, Indonesia",
+      type: "fulltime",
+      isCurrent: false,
+      description:
+        "Developed internal applications for Indonesia's prominent stock market school using various integrations.",
+      achievements: [
+        "Built internal applications using Laravel framework",
+        "Integrated with InfusionSoft, ClickFunnels, Firebase",
+        "Implemented Damcorp Whatsapp and Pepipost Email integration",
+        "Developed RESTful APIs with Monolithic Architecture",
+      ],
+      technologies: [
+        "Laravel",
+        "Golang",
+        "MySQL",
+        "GitLab",
+        "AWS",
+        "Firebase",
+        "REST API",
+      ],
+    },
+    {
+      company: "PT Indonusa Telemedia (Transvision)",
+      logo: "/assets/images/porto/transvision.png",
+      position: "Senior MIS Database & Automation System",
+      period: "2015 - 2019",
+      location: "Jakarta, Indonesia",
+      type: "fulltime",
+      isCurrent: false,
+      description:
+        "Managed database systems and developed internal applications for Indonesia's leading pay-TV provider.",
+      achievements: [
+        "Built internal applications for daily operations and reporting",
+        "Maintained database from Bank Mega for telesales team",
+        "Maintained internal servers and infrastructure",
+        "Provided MySQL/Database training to team members",
+      ],
+      technologies: ["PHP", "MySQL", "VBA", "Excel", "SQL Server"],
+    },
+    {
+      company: "PT Proxsis",
+      logo: "/assets/images/porto/proxsis.png",
+      position: "IT Support",
+      period: "2013 - 2015",
+      location: "Jakarta, Indonesia",
+      type: "fulltime",
+      isCurrent: false,
+      description:
+        "Provided IT support and maintenance for enterprise consulting company.",
+      achievements: [
+        "Maintained PCs and resolved software troubleshooting",
+        "Handled OS reinstallation, printer, and network issues",
+        "Maintained email and internet services",
+        "Managed provider payments and subscriptions",
+      ],
+      technologies: ["Windows", "Network", "Hardware", "Email Systems"],
+    },
+    {
+      company: "PT ACA (Asuransi Central Asia)",
+      logo: "/assets/images/porto/aca.jpg",
+      position: "MIS / Admin Support",
+      period: "2012 - 2013",
+      location: "Jakarta, Indonesia",
+      type: "fulltime",
+      isCurrent: false,
+      description:
+        "Created reports and provided system training for telesales operations at major insurance company.",
+      achievements: [
+        "Created daily, weekly, monthly, and yearly telesales reports",
+        "Developed commission reports for telesales team",
+        "Provided system training to new telesales members",
+      ],
+      technologies: ["Excel", "VBA", "SQL", "Reporting Tools"],
+    },
+  ];
+
+  const stats = [
+    { label: "Years of Experience", value: "13+" },
+    { label: "Projects Completed", value: "50+" },
+    { label: "Companies Worked", value: "7" },
+    { label: "Happy Clients", value: "20+" },
+  ];
+
+  return {
+    props: {
+      workHistory,
+      stats,
+    },
+  };
 }

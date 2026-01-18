@@ -3,13 +3,13 @@ const nextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: 'https',
-        hostname: 'bit.ly',
+        protocol: "https",
+        hostname: "bit.ly",
       },
       {
-        protocol: 'https',
-        hostname: 'dedi.asia',
-        pathname: '/assets/images/**',
+        protocol: "https",
+        hostname: "dedi.asia",
+        pathname: "/assets/images/**",
       },
     ],
   },
@@ -24,4 +24,3 @@ const nextConfig = {
 };
 
 module.exports = nextConfig;
-
