@@ -106,7 +106,7 @@ export default function ChatBot() {
   return (
     <>
       {/* Chat Widget Container */}
-      <div className="fixed bottom-24 right-4 sm:bottom-6 sm:right-6 z-40">
+      <div className="fixed bottom-24 right-4 sm:bottom-6 sm:right-6 z-[60]">
         {/* Chat Window */}
         <div
           className={`fixed left-2 right-2 bottom-20 top-2 sm:inset-auto sm:bottom-[88px] sm:right-6 sm:left-auto sm:top-auto sm:w-96 sm:h-[600px] sm:max-h-[80vh] transition-all duration-300 transform origin-bottom-right ${
