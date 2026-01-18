@@ -1,5 +1,15 @@
 [
   {
+    "label": "Primesotech",
+    "img": {
+      "src": "/assets/images/porto/primesotech.webp",
+      "alt": "Primesotech"
+    },
+    "link": "https://primesotech.id/",
+    "shortDesc": "software house",
+    "isActive": true
+  },
+  {
     "label": "SertifikasiPro Platform",
     "img": {
       "src": "/assets/images/porto/sertifikasipro.png",
