@@ -105,11 +105,11 @@ export default function ChatBot() {
 
   return (
     <>
-      {/* Chat Widget Container */}
-      <div className="fixed bottom-6 right-6 z-50">
+      {/* Chat Widget Container - bottom-24 on mobile to avoid navbar overlap, bottom-6 on desktop */}
+      <div className="fixed bottom-24 right-4 sm:bottom-6 sm:right-6 z-40">
         {/* Chat Window */}
         <div
-          className={`fixed inset-0 sm:inset-auto sm:bottom-24 sm:right-6 w-full h-full sm:w-96 sm:h-[600px] sm:max-h-[80vh] transition-all duration-300 transform origin-bottom-right ${
+          className={`fixed inset-0 sm:inset-auto sm:bottom-[88px] sm:right-6 w-full h-full sm:w-96 sm:h-[600px] sm:max-h-[80vh] transition-all duration-300 transform origin-bottom-right ${
             isOpen
               ? "scale-100 opacity-100 pointer-events-auto"
               : "scale-95 opacity-0 pointer-events-none"
