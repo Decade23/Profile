@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
 import Link from "next/link";
+import Image from "next/image";
 import Seo from "./Seo";
 import NavbarFooter from "./NavbarFooter";
 import ChatBot from "../ChatBot";
@@ -87,19 +88,24 @@ function ThemeToggle() {
 
 function Header() {
   return (
-    <header className="fixed top-0 left-0 right-0 z-50">
+    <header className="fixed top-0 left-0 right-0 z-50 backdrop-blur-lg bg-white/70 dark:bg-slate-900/70">
       <div className="max-w-2xl mx-auto lg:max-w-4xl xl:max-w-5xl 2xl:max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 sm:h-20">
           {/* Logo / Brand - Links to Home */}
           <div className="flex items-center gap-2">
             <Link
               href="/"
-              className="w-10 h-10 rounded-xl bg-slate-900 dark:bg-white flex items-center justify-center shadow-lg transition-colors duration-150 active:scale-95 touch-manipulation"
+              className="w-10 h-10 rounded-xl flex items-center justify-center overflow-hidden shadow-lg transition-colors duration-150 active:scale-95 touch-manipulation"
               style={{ WebkitTapHighlightColor: "transparent" }}
+              aria-label="Back to homepage"
             >
-              <span className="text-white dark:text-slate-900 font-bold text-sm">
-                DF
-              </span>
+              <Image
+                src="/favicon_df.png"
+                alt="Dedi Fardiyanto Logo"
+                width={40}
+                height={40}
+                priority
+              />
             </Link>
           </div>
 

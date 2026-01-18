@@ -17,6 +17,12 @@ export default function Seo({
     <Head>
       <title>{`${title} | Dedi Fardiyanto`}</title>
       <meta name="description" content={description} />
+
+      {/* Favicon Links */}
+      <link rel="icon" href="/favicon.ico" sizes="any" />
+      <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+      <link rel="apple-touch-icon" href="/favicon_df.png" />
+
       <link rel="canonical" href={url} />
 
       <meta property="og:type" content="website" />

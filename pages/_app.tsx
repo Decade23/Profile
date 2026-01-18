@@ -2,17 +2,26 @@ import type { AppProps } from "next/app";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
 import NProgress from "nprogress";
-import { Inter } from "next/font/google";
+import { Inter, Poppins } from "next/font/google";
 import "../styles/globals.css";
 import { Analytics } from "@vercel/analytics/react";
 import ErrorBoundary from "../components/ErrorBoundary";
 import { ThemeProvider } from "next-themes";
 
 // Optimized font loading with next/font
+// Inter - Clean, readable body text
 const inter = Inter({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-inter",
+});
+
+// Poppins - Modern, geometric font for headings
+const poppins = Poppins({
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["400", "600", "700", "900"],
+  variable: "--font-poppins",
 });
 
 // NProgress configuration
@@ -55,7 +64,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
       <ErrorBoundary>
-        <main className={`${inter.variable} font-sans`}>
+        <main className={`${inter.variable} ${poppins.variable} font-sans`}>
           <Component {...pageProps} />
           <Analytics />
         </main>

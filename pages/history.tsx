@@ -119,8 +119,10 @@ export default function History({ workHistory, stats }) {
 
                       {/* Content */}
                       <div
-                        className={`flex-1 ml-16 sm:ml-0 ${
-                          index % 2 === 0 ? "sm:pr-16" : "sm:pl-16"
+                        className={`flex-1 ml-20 sm:ml-0 ${
+                          index % 2 === 0
+                            ? "sm:pr-20 lg:pr-24"
+                            : "sm:pl-20 lg:pl-24"
                         }`}
                       >
                         <div
