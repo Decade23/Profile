@@ -46,41 +46,52 @@ bun run start
 
 The development server will start at [http://localhost:3006](http://localhost:3006).
 
+## Documentation
+
+- `docs/README.md` - Documentation index
+- `docs/CONTRIBUTING.md` - Contribution guidelines
+- `docs/DEPLOYMENT.md` - Deployment guide
+
 ## Project Structure
 
 ```
-├── components/           # React components
-│   ├── layouts/         # Layout components (Layout, Seo, NavbarFooter)
-│   ├── profile/         # Profile-specific components
-│   ├── ChatBot.tsx      # AI Chatbot component (Groq integration)
-│   ├── ErrorBoundary.js # Error boundary component
-│   ├── Project.js       # Projects showcase
-│   ├── Repo.js          # Repository links
-│   └── Medsos.js        # Social media links
-├── data/                # Static data
-│   ├── projects.json    # Projects data
-│   └── repos.json       # Repository data
-├── pages/               # Next.js pages (Pages Router)
-│   ├── api/             # API routes
-│   │   └── chat.ts      # Chatbot API endpoint (Groq)
-│   ├── _app.tsx         # App wrapper
-│   ├── _document.tsx    # Document wrapper
-│   ├── index.tsx        # Home page
-│   ├── profile.tsx      # Profile page
-│   ├── contact.tsx      # Contact page
-│   ├── history.tsx      # Work history timeline
-│   └── privacy.tsx      # Privacy policy
-├── public/              # Static assets
-│   ├── assets/          # Images and media
-│   │   └── images/porto # Company logos
-│   ├── robots.txt       # SEO robots file
-│   ├── favicon.svg      # Site favicon (DF icon)
-│   └── favicon.ico      # Fallback favicon
-├── styles/              # Global styles
-│   └── globals.css      # Tailwind imports
-├── next.config.js       # Next.js configuration
-├── tailwind.config.js   # Tailwind CSS configuration
-└── package.json         # Dependencies and scripts
+components/             # React components
+  layouts/              # Layout components (Layout, Seo, NavbarFooter)
+  profile/              # Profile-specific components
+  ChatBot.tsx           # AI Chatbot component (Groq integration)
+  ErrorBoundary.js      # Error boundary component
+  Project.js            # Projects showcase
+  Repo.js               # Repository links
+  Medsos.js             # Social media links
+data/                   # Static data
+  projects.json         # Projects data
+  repos.json            # Repository data
+pages/                  # Next.js pages (Pages Router)
+  api/                  # API routes
+    chat.ts             # Chatbot API endpoint (Groq)
+  _app.tsx              # App wrapper
+  _document.tsx         # Document wrapper
+  index.tsx             # Home page
+  profile.tsx           # Profile page
+  contact.tsx           # Contact page
+  history.tsx           # Work history timeline
+  privacy.tsx           # Privacy policy
+public/                 # Static assets
+  assets/               # Images and media
+    images/porto         # Company logos
+  robots.txt            # SEO robots file
+  favicon.ico           # Site favicon (ICO)
+  favicon_df.png        # Apple touch icon
+  logo_df.webp          # Optimized logo
+styles/                 # Global styles
+  globals.css           # Tailwind imports
+docs/                   # Documentation
+  README.md             # Docs index
+  CONTRIBUTING.md       # Contribution guidelines
+  DEPLOYMENT.md         # Deployment guide
+next.config.js          # Next.js configuration
+tailwind.config.js      # Tailwind CSS configuration
+package.json            # Dependencies and scripts
 ```
 
 ## Available Scripts
@@ -101,6 +112,9 @@ The development server will start at [http://localhost:3006](http://localhost:30
 - **Runtime**: Bun (recommended)
 
 ## Deployment
+
+Detailed guide: `docs/DEPLOYMENT.md`.
+
 
 ### Vercel (Recommended)
 
@@ -197,6 +211,8 @@ Contributions are welcome! Please follow these steps:
 3. Make your changes
 4. Test thoroughly
 5. Submit a pull request
+
+For full guidelines, see `docs/CONTRIBUTING.md`.
 
 ## License
 
