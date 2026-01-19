@@ -62,208 +62,218 @@ export default function History({ workHistory, stats }) {
 
                 {/* Timeline Items */}
                 <div className="space-y-12">
-                  {workHistory.map((job, index) => (
-                    <div
-                      key={index}
-                      className={`relative flex flex-col sm:flex-row gap-8 ${
-                        index % 2 === 0 ? "sm:flex-row-reverse" : ""
-                      }`}
-                    >
-                      {/* Timeline Bullet - Improved Design */}
-                      <div className="absolute left-0 sm:left-1/2 sm:-translate-x-1/2 z-10 -top-1">
-                        {/* Year Badge */}
-                        <div
-                          className={`relative flex items-center justify-center w-12 h-12 rounded-xl shadow-lg transition-all duration-300 ${
-                            job.isCurrent
-                              ? "bg-gradient-to-br from-fuchsia-500 to-violet-600"
-                              : "bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-600"
-                          }`}
-                        >
-                          {/* Icon */}
-                          <svg
-                            className={`w-5 h-5 ${job.isCurrent ? "text-white" : "text-fuchsia-500 dark:text-fuchsia-400"}`}
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                            strokeWidth={2}
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                            />
-                          </svg>
-                          {/* Pulse Animation for Current */}
-                          {job.isCurrent && (
-                            <>
-                              <span className="absolute inset-0 rounded-xl bg-fuchsia-400 animate-ping opacity-30" />
-                              <span className="absolute -top-1 -right-1 w-3 h-3 rounded-full bg-emerald-500 border-2 border-white dark:border-slate-800" />
-                            </>
-                          )}
-                        </div>
-                        {/* Year Label - Hidden on mobile, shown on desktop */}
-                        <div
-                          className={`hidden sm:block absolute top-12 left-1/2 -translate-x-1/2 whitespace-nowrap`}
-                        >
-                          <span
-                            className={`text-xs font-bold px-2 py-1 rounded-md ${
-                              job.isCurrent
-                                ? "bg-fuchsia-100 dark:bg-fuchsia-900/50 text-fuchsia-700 dark:text-fuchsia-300"
-                                : "bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-400"
-                            }`}
-                          >
-                            {job.period.split(" - ")[0]}
-                          </span>
-                        </div>
-                      </div>
+                  {workHistory.map((job, index) => {
+                    const isPersonalLogo = job.logo.startsWith("/logo_df.webp");
 
-                      {/* Content */}
+                    return (
                       <div
-                        className={`flex-1 ml-20 sm:ml-0 ${
-                          index % 2 === 0
-                            ? "sm:pr-20 lg:pr-24"
-                            : "sm:pl-20 lg:pl-24"
+                        key={index}
+                        className={`relative flex flex-col sm:flex-row gap-8 ${
+                          index % 2 === 0 ? "sm:flex-row-reverse" : ""
                         }`}
                       >
-                        <div
-                          className={`p-6 rounded-2xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-lg transition-all duration-300 cursor-pointer ${
-                            job.isCurrent
-                              ? "ring-2 ring-fuchsia-500 ring-offset-2 dark:ring-offset-slate-900"
-                              : ""
-                          }`}
-                          onClick={() =>
-                            setExpandedIndex(
-                              expandedIndex === index ? null : index,
-                            )
-                          }
-                        >
-                          {/* Header */}
-                          <div className="flex items-start gap-4">
-                            <div className="relative flex-shrink-0 w-14 h-14 rounded-xl overflow-hidden bg-slate-100 dark:bg-slate-700">
-                              <Image
-                                src={job.logo}
-                                alt={job.company}
-                                fill
-                                className="object-contain p-2"
-                              />
-                            </div>
-                            <div className="flex-1 min-w-0">
-                              <div className="flex flex-wrap items-center gap-2">
-                                <h3 className="text-lg font-bold text-slate-900 dark:text-white">
-                                  {job.company}
-                                </h3>
-                                {job.isCurrent && (
-                                  <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 dark:bg-emerald-900/50 text-emerald-700 dark:text-emerald-400 uppercase">
-                                    Current
-                                  </span>
-                                )}
-                                <span
-                                  className={`px-2 py-0.5 rounded-full text-[10px] font-bold uppercase ${
-                                    job.type === "fulltime"
-                                      ? "bg-blue-100 dark:bg-blue-900/50 text-blue-700 dark:text-blue-400"
-                                      : job.type === "freelance"
-                                        ? "bg-amber-100 dark:bg-amber-900/50 text-amber-700 dark:text-amber-400"
-                                        : "bg-purple-100 dark:bg-purple-900/50 text-purple-700 dark:text-purple-400"
-                                  }`}
-                                >
-                                  {job.type}
-                                </span>
-                              </div>
-                              <p className="text-fuchsia-600 dark:text-fuchsia-400 font-semibold">
-                                {job.position}
-                              </p>
-                              <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mt-1 text-sm text-slate-500 dark:text-slate-400">
-                                <span>{job.period}</span>
-                                <span>•</span>
-                                <span>{job.location}</span>
-                              </div>
-                            </div>
-                            {/* Expand Icon */}
-                            <button className="flex-shrink-0 p-2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-300">
-                              <svg
-                                className={`w-5 h-5 transition-transform duration-300 ${
-                                  expandedIndex === index ? "rotate-180" : ""
-                                }`}
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor"
-                                strokeWidth={2}
-                              >
-                                <path
-                                  strokeLinecap="round"
-                                  strokeLinejoin="round"
-                                  d="M19 9l-7 7-7-7"
-                                />
-                              </svg>
-                            </button>
-                          </div>
-
-                          {/* Expanded Content */}
+                        {/* Timeline Bullet - Improved Design */}
+                        <div className="absolute left-0 sm:left-1/2 sm:-translate-x-1/2 z-10 -top-1">
+                          {/* Year Badge */}
                           <div
-                            className={`overflow-hidden transition-all duration-300 ${
-                              expandedIndex === index
-                                ? "max-h-[1000px] opacity-100 mt-4"
-                                : "max-h-0 opacity-0"
+                            className={`relative flex items-center justify-center w-12 h-12 rounded-xl shadow-lg transition-all duration-300 ${
+                              job.isCurrent
+                                ? "bg-gradient-to-br from-fuchsia-500 to-violet-600"
+                                : "bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-600"
                             }`}
                           >
-                            <p className="text-slate-600 dark:text-slate-400 mb-4">
-                              {job.description}
-                            </p>
+                            {/* Icon */}
+                            <svg
+                              className={`w-5 h-5 ${job.isCurrent ? "text-white" : "text-fuchsia-500 dark:text-fuchsia-400"}`}
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              stroke="currentColor"
+                              strokeWidth={2}
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                              />
+                            </svg>
+                            {/* Pulse Animation for Current */}
+                            {job.isCurrent && (
+                              <>
+                                <span className="absolute inset-0 rounded-xl bg-fuchsia-400 animate-ping opacity-30" />
+                                <span className="absolute -top-1 -right-1 w-3 h-3 rounded-full bg-emerald-500 border-2 border-white dark:border-slate-800" />
+                              </>
+                            )}
+                          </div>
+                          {/* Year Label - Hidden on mobile, shown on desktop */}
+                          <div
+                            className={`hidden sm:block absolute top-12 left-1/2 -translate-x-1/2 whitespace-nowrap`}
+                          >
+                            <span
+                              className={`text-xs font-bold px-2 py-1 rounded-md ${
+                                job.isCurrent
+                                  ? "bg-fuchsia-100 dark:bg-fuchsia-900/50 text-fuchsia-700 dark:text-fuchsia-300"
+                                  : "bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-400"
+                              }`}
+                            >
+                              {job.period.split(" - ")[0]}
+                            </span>
+                          </div>
+                        </div>
 
-                            {/* Achievements */}
-                            <div className="mb-4">
-                              <h4 className="text-sm font-bold text-slate-900 dark:text-white mb-2">
-                                Key Achievements
-                              </h4>
-                              <ul className="space-y-1.5">
-                                {job.achievements.map((achievement, i) => (
-                                  <li
-                                    key={i}
-                                    className="flex items-start gap-2 text-sm text-slate-600 dark:text-slate-400"
+                        {/* Content */}
+                        <div
+                          className={`flex-1 ml-20 sm:ml-0 ${
+                            index % 2 === 0
+                              ? "sm:pl-24 lg:pl-28"
+                              : "sm:pr-24 lg:pr-28"
+                          }`}
+                        >
+                          <div
+                            className={`p-6 rounded-2xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-lg transition-all duration-300 cursor-pointer ${
+                              job.isCurrent
+                                ? "ring-2 ring-fuchsia-500 ring-offset-2 dark:ring-offset-slate-900"
+                                : ""
+                            }`}
+                            onClick={() =>
+                              setExpandedIndex(
+                                expandedIndex === index ? null : index,
+                              )
+                            }
+                          >
+                            {/* Header */}
+                            <div className="flex items-start gap-4">
+                              <div
+                                className={`relative flex-shrink-0 w-14 h-14 rounded-xl overflow-hidden ${
+                                  isPersonalLogo
+                                    ? "bg-transparent"
+                                    : "bg-slate-100 dark:bg-slate-700"
+                                }`}
+                              >
+                                <Image
+                                  src={job.logo}
+                                  alt={job.company}
+                                  fill
+                                  className={`object-contain ${isPersonalLogo ? "" : "p-2"}`}
+                                />
+                              </div>
+                              <div className="flex-1 min-w-0">
+                                <div className="flex flex-wrap items-center gap-2">
+                                  <h3 className="text-lg font-bold text-slate-900 dark:text-white">
+                                    {job.company}
+                                  </h3>
+                                  {job.isCurrent && (
+                                    <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 dark:bg-emerald-900/50 text-emerald-700 dark:text-emerald-400 uppercase">
+                                      Current
+                                    </span>
+                                  )}
+                                  <span
+                                    className={`px-2 py-0.5 rounded-full text-[10px] font-bold uppercase ${
+                                      job.type === "fulltime"
+                                        ? "bg-blue-100 dark:bg-blue-900/50 text-blue-700 dark:text-blue-400"
+                                        : job.type === "freelance"
+                                          ? "bg-amber-100 dark:bg-amber-900/50 text-amber-700 dark:text-amber-400"
+                                          : "bg-purple-100 dark:bg-purple-900/50 text-purple-700 dark:text-purple-400"
+                                    }`}
                                   >
-                                    <svg
-                                      className="w-4 h-4 text-emerald-500 flex-shrink-0 mt-0.5"
-                                      fill="none"
-                                      viewBox="0 0 24 24"
-                                      stroke="currentColor"
-                                      strokeWidth={2}
-                                    >
-                                      <path
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        d="M5 13l4 4L19 7"
-                                      />
-                                    </svg>
-                                    {achievement}
-                                  </li>
-                                ))}
-                              </ul>
+                                    {job.type}
+                                  </span>
+                                </div>
+                                <p className="text-fuchsia-600 dark:text-fuchsia-400 font-semibold">
+                                  {job.position}
+                                </p>
+                                <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mt-1 text-sm text-slate-500 dark:text-slate-400">
+                                  <span>{job.period}</span>
+                                  <span>•</span>
+                                  <span>{job.location}</span>
+                                </div>
+                              </div>
+                              {/* Expand Icon */}
+                              <button className="flex-shrink-0 p-2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-300">
+                                <svg
+                                  className={`w-5 h-5 transition-transform duration-300 ${
+                                    expandedIndex === index ? "rotate-180" : ""
+                                  }`}
+                                  fill="none"
+                                  viewBox="0 0 24 24"
+                                  stroke="currentColor"
+                                  strokeWidth={2}
+                                >
+                                  <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    d="M19 9l-7 7-7-7"
+                                  />
+                                </svg>
+                              </button>
                             </div>
 
-                            {/* Technologies */}
-                            <div>
-                              <h4 className="text-sm font-bold text-slate-900 dark:text-white mb-2">
-                                Technologies Used
-                              </h4>
-                              <div className="flex flex-wrap gap-2">
-                                {job.technologies.map((tech, i) => (
-                                  <span
-                                    key={i}
-                                    className="px-3 py-1 rounded-lg text-xs font-semibold bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300"
-                                  >
-                                    {tech}
-                                  </span>
-                                ))}
+                            {/* Expanded Content */}
+                            <div
+                              className={`overflow-hidden transition-all duration-300 ${
+                                expandedIndex === index
+                                  ? "max-h-[1000px] opacity-100 mt-4"
+                                  : "max-h-0 opacity-0"
+                              }`}
+                            >
+                              <p className="text-slate-600 dark:text-slate-400 mb-4">
+                                {job.description}
+                              </p>
+
+                              {/* Achievements */}
+                              <div className="mb-4">
+                                <h4 className="text-sm font-bold text-slate-900 dark:text-white mb-2">
+                                  Key Achievements
+                                </h4>
+                                <ul className="space-y-1.5">
+                                  {job.achievements.map((achievement, i) => (
+                                    <li
+                                      key={i}
+                                      className="flex items-start gap-2 text-sm text-slate-600 dark:text-slate-400"
+                                    >
+                                      <svg
+                                        className="w-4 h-4 text-emerald-500 flex-shrink-0 mt-0.5"
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                        stroke="currentColor"
+                                        strokeWidth={2}
+                                      >
+                                        <path
+                                          strokeLinecap="round"
+                                          strokeLinejoin="round"
+                                          d="M5 13l4 4L19 7"
+                                        />
+                                      </svg>
+                                      {achievement}
+                                    </li>
+                                  ))}
+                                </ul>
+                              </div>
+
+                              {/* Technologies */}
+                              <div>
+                                <h4 className="text-sm font-bold text-slate-900 dark:text-white mb-2">
+                                  Technologies Used
+                                </h4>
+                                <div className="flex flex-wrap gap-2">
+                                  {job.technologies.map((tech, i) => (
+                                    <span
+                                      key={i}
+                                      className="px-3 py-1 rounded-lg text-xs font-semibold bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300"
+                                    >
+                                      {tech}
+                                    </span>
+                                  ))}
+                                </div>
                               </div>
                             </div>
                           </div>
                         </div>
-                      </div>
 
-                      {/* Spacer for alternating layout */}
-                      <div className="hidden sm:block flex-1" />
-                    </div>
-                  ))}
+                        {/* Spacer for alternating layout */}
+                        <div className="hidden sm:block flex-1" />
+                      </div>
+                    );
+                  })}
                 </div>
               </div>
             </div>
@@ -320,7 +330,7 @@ export async function getStaticProps() {
       company: "Bank Tabungan Negara (BTN)",
       logo: "/assets/images/porto/btn.png",
       position: "Tech Lead",
-      period: "2024 - Present",
+      period: "2024",
       location: "Jakarta, Indonesia",
       type: "fulltime",
       isCurrent: true,
@@ -346,7 +356,7 @@ export async function getStaticProps() {
       company: "PT Adira Dinamika Multi Finance",
       logo: "/assets/images/porto/adira.png",
       position: "Senior Fullstack Developer",
-      period: "2021 - 2024",
+      period: "2021",
       location: "Jakarta, Indonesia",
       type: "fulltime",
       isCurrent: false,
@@ -372,7 +382,7 @@ export async function getStaticProps() {
       company: "PT Koki Teknologi Indonesia",
       logo: "/assets/images/porto/koki.png",
       position: "Web / Fullstack Developer",
-      period: "2020 - 2021",
+      period: "2020",
       location: "Jakarta, Indonesia",
       type: "fulltime",
       isCurrent: false,
@@ -399,7 +409,7 @@ export async function getStaticProps() {
       company: "Ellen May Institute",
       logo: "/assets/images/porto/emi.png",
       position: "Backend Programmer",
-      period: "2019 - 2020",
+      period: "2019",
       location: "Jakarta, Indonesia",
       type: "fulltime",
       isCurrent: false,
@@ -425,7 +435,7 @@ export async function getStaticProps() {
       company: "PT Indonusa Telemedia (Transvision)",
       logo: "/assets/images/porto/transvision.png",
       position: "Senior MIS Database & Automation System",
-      period: "2015 - 2019",
+      period: "2015",
       location: "Jakarta, Indonesia",
       type: "fulltime",
       isCurrent: false,
@@ -443,7 +453,7 @@ export async function getStaticProps() {
       company: "PT Proxsis",
       logo: "/assets/images/porto/proxsis.png",
       position: "IT Support",
-      period: "2013 - 2015",
+      period: "2013",
       location: "Jakarta, Indonesia",
       type: "fulltime",
       isCurrent: false,
@@ -461,7 +471,7 @@ export async function getStaticProps() {
       company: "PT ACA (Asuransi Central Asia)",
       logo: "/assets/images/porto/aca.jpg",
       position: "MIS / Admin Support",
-      period: "2012 - 2013",
+      period: "2012",
       location: "Jakarta, Indonesia",
       type: "fulltime",
       isCurrent: false,
@@ -475,22 +485,28 @@ export async function getStaticProps() {
       technologies: ["Excel", "VBA", "SQL", "Reporting Tools"],
     },
     {
-      company: "CV. Anugrah Pratama",
-      logo: "/assets/images/porto/default-company.png",
-      position: "Admin & IT Support",
-      period: "2011 - 2012",
+      company: "Early Career (F&B & Bag Retail)",
+      logo: "/logo_df.webp",
+      position: "Operations & Customer Service Staff",
+      period: "2011",
       location: "Jakarta, Indonesia",
       type: "fulltime",
       isCurrent: false,
       description:
-        "Started professional career handling administrative tasks and IT support for a local company.",
+        "Started my career as operational staff in restaurant and bag retail environments, focusing on customer experience, daily operations, and sales support.",
       achievements: [
-        "Handled administrative documentation and filing",
-        "Provided basic IT support and troubleshooting",
-        "Managed office equipment maintenance",
-        "First exposure to professional work environment",
+        "Maintained service standards and speed during peak hours",
+        "Handled POS transactions and daily cash reconciliation accurately",
+        "Managed inventory, merchandising, and goods receiving",
+        "Executed operational SOPs and cross-shift teamwork to keep operations smooth",
       ],
-      technologies: ["Windows", "Microsoft Office", "Basic Networking"],
+      technologies: [
+        "POS",
+        "Customer Service",
+        "Sales Support",
+        "Inventory Control",
+        "Cash Handling",
+      ],
     },
   ];
 

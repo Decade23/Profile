@@ -2,9 +2,14 @@ import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
 import Link from "next/link";
 import Image from "next/image";
+import dynamic from "next/dynamic";
 import Seo from "./Seo";
 import NavbarFooter from "./NavbarFooter";
-import ChatBot from "../ChatBot";
+
+const ChatBot = dynamic(() => import("../ChatBot"), {
+  ssr: false,
+  loading: () => null,
+});
 
 interface SeoProps {
   title?: string;
@@ -100,7 +105,7 @@ function Header() {
               aria-label="Back to homepage"
             >
               <Image
-                src="/logo_df.webp?v=10"
+                src="/logo_df.webp"
                 alt="Dedi Fardiyanto Logo"
                 width={40}
                 height={40}
@@ -122,6 +127,36 @@ function Header() {
 }
 
 export default function Layout({ title, children, seo = {} }: LayoutProps) {
+  const [isChatbotReady, setIsChatbotReady] = useState(false);
+
+  useEffect(() => {
+    const idleCallback = (window as any).requestIdleCallback as
+      | ((cb: () => void) => number)
+      | undefined;
+    const cancelIdleCallback = (window as any).cancelIdleCallback as
+      | ((id: number) => void)
+      | undefined;
+    let idleId: number | null = null;
+    let timeoutId: number | null = null;
+
+    const scheduleChatbot = () => setIsChatbotReady(true);
+
+    if (idleCallback) {
+      idleId = idleCallback(scheduleChatbot);
+    } else {
+      timeoutId = window.setTimeout(scheduleChatbot, 1500);
+    }
+
+    return () => {
+      if (idleId !== null && cancelIdleCallback) {
+        cancelIdleCallback(idleId);
+      }
+      if (timeoutId !== null) {
+        clearTimeout(timeoutId);
+      }
+    };
+  }, []);
+
   return (
     <div className="min-h-screen bg-white dark:bg-slate-900 transition-colors duration-150">
       <Seo title={title} {...seo} />
@@ -141,7 +176,7 @@ export default function Layout({ title, children, seo = {} }: LayoutProps) {
         <NavbarFooter />
 
         {/* AI ChatBot */}
-        <ChatBot />
+        {isChatbotReady && <ChatBot />}
       </div>
     </div>
   );

@@ -1,6 +1,7 @@
 import Layout from "@components/layouts/Layout";
 import BlurImage from "@components/layouts/BlurImage";
 import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
 import Link from "next/link";
 
@@ -67,11 +68,51 @@ function AnimatedCounter({
 }
 
 export default function Home({ projects, repos }) {
+  const router = useRouter();
   const whatsappNumber = "6285693380123";
   const whatsappMessage = encodeURIComponent(
     "Hi Dedi, I'm interested in discussing a project with you.",
   );
   const whatsappLink = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
+
+  useEffect(() => {
+    const connection = (navigator as any).connection;
+    const shouldSkip =
+      connection?.saveData ||
+      ["slow-2g", "2g"].includes(connection?.effectiveType);
+
+    if (shouldSkip) {
+      return;
+    }
+
+    const idleCallback = (window as any).requestIdleCallback as
+      | ((cb: () => void) => number)
+      | undefined;
+    const cancelIdleCallback = (window as any).cancelIdleCallback as
+      | ((id: number) => void)
+      | undefined;
+    let idleId: number | null = null;
+    let timeoutId: number | null = null;
+
+    const prefetchProfile = () => {
+      router.prefetch("/profile").catch(() => {});
+    };
+
+    if (idleCallback) {
+      idleId = idleCallback(prefetchProfile);
+    } else {
+      timeoutId = window.setTimeout(prefetchProfile, 1200);
+    }
+
+    return () => {
+      if (idleId !== null && cancelIdleCallback) {
+        cancelIdleCallback(idleId);
+      }
+      if (timeoutId !== null) {
+        clearTimeout(timeoutId);
+      }
+    };
+  }, [router]);
 
   return (
     <Layout title="Home">
