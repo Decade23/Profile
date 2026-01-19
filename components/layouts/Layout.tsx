@@ -1,15 +1,14 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
+import type { ComponentType } from "react";
 import { useTheme } from "next-themes";
 import Link from "next/link";
 import Image from "next/image";
-import dynamic from "next/dynamic";
 import Seo from "./Seo";
 import NavbarFooter from "./NavbarFooter";
 
-const ChatBot = dynamic(() => import("../ChatBot"), {
-  ssr: false,
-  loading: () => null,
-});
+interface ChatBotProps {
+  initialOpen?: boolean;
+}
 
 interface SeoProps {
   title?: string;
@@ -127,9 +126,45 @@ function Header() {
 }
 
 export default function Layout({ title, children, seo = {} }: LayoutProps) {
-  const [isChatbotReady, setIsChatbotReady] = useState(false);
+  const [chatBotComponent, setChatBotComponent] =
+    useState<ComponentType<ChatBotProps> | null>(null);
+  const [isChatBotMounted, setIsChatBotMounted] = useState(false);
+  const [isChatBotLoading, setIsChatBotLoading] = useState(false);
+  const [shouldOpenChatBot, setShouldOpenChatBot] = useState(false);
+  const hasScheduledPreload = useRef(false);
+  const ChatBotComponent = chatBotComponent;
+
+  const loadChatBot = () => {
+    if (chatBotComponent || isChatBotLoading) {
+      return;
+    }
+    setIsChatBotLoading(true);
+    import("../ChatBot")
+      .then((mod) => {
+        setChatBotComponent(() => mod.default);
+      })
+      .catch(() => {})
+      .finally(() => {
+        setIsChatBotLoading(false);
+      });
+  };
 
   useEffect(() => {
+    if (hasScheduledPreload.current || chatBotComponent || isChatBotLoading) {
+      return;
+    }
+
+    const connection = (navigator as any).connection;
+    const shouldSkip =
+      connection?.saveData ||
+      ["slow-2g", "2g"].includes(connection?.effectiveType);
+
+    if (shouldSkip) {
+      return;
+    }
+
+    hasScheduledPreload.current = true;
+
     const idleCallback = (window as any).requestIdleCallback as
       | ((cb: () => void) => number)
       | undefined;
@@ -139,12 +174,10 @@ export default function Layout({ title, children, seo = {} }: LayoutProps) {
     let idleId: number | null = null;
     let timeoutId: number | null = null;
 
-    const scheduleChatbot = () => setIsChatbotReady(true);
-
     if (idleCallback) {
-      idleId = idleCallback(scheduleChatbot);
+      idleId = idleCallback(loadChatBot);
     } else {
-      timeoutId = window.setTimeout(scheduleChatbot, 1500);
+      timeoutId = window.setTimeout(loadChatBot, 1500);
     }
 
     return () => {
@@ -155,7 +188,28 @@ export default function Layout({ title, children, seo = {} }: LayoutProps) {
         clearTimeout(timeoutId);
       }
     };
-  }, []);
+  }, [chatBotComponent, isChatBotLoading]);
+
+  useEffect(() => {
+    if (shouldOpenChatBot && chatBotComponent && !isChatBotMounted) {
+      setIsChatBotMounted(true);
+    }
+  }, [shouldOpenChatBot, chatBotComponent, isChatBotMounted]);
+
+  const handleChatBotClick = () => {
+    if (!shouldOpenChatBot) {
+      setShouldOpenChatBot(true);
+    }
+
+    if (chatBotComponent) {
+      if (!isChatBotMounted) {
+        setIsChatBotMounted(true);
+      }
+      return;
+    }
+
+    loadChatBot();
+  };
 
   return (
     <div className="min-h-screen bg-white dark:bg-slate-900 transition-colors duration-150">
@@ -176,7 +230,65 @@ export default function Layout({ title, children, seo = {} }: LayoutProps) {
         <NavbarFooter />
 
         {/* AI ChatBot */}
-        {isChatbotReady && <ChatBot />}
+        {!isChatBotMounted && (
+          <div className="fixed bottom-24 right-4 sm:bottom-6 sm:right-6 z-[60]">
+            <button
+              onClick={handleChatBotClick}
+              disabled={isChatBotLoading}
+              aria-label={
+                isChatBotLoading
+                  ? "Loading chat assistant"
+                  : "Open chat assistant"
+              }
+              className={`w-14 h-14 rounded-full shadow-lg flex items-center justify-center transition-all duration-300 ${
+                isChatBotLoading
+                  ? "bg-slate-300 dark:bg-slate-700"
+                  : "bg-gradient-to-r from-fuchsia-500 to-violet-500 hover:shadow-xl hover:scale-105 active:scale-95"
+              }`}
+            >
+              {isChatBotLoading ? (
+                <svg
+                  className="w-6 h-6 text-white animate-spin"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                >
+                  <circle
+                    className="opacity-30"
+                    cx="12"
+                    cy="12"
+                    r="10"
+                    stroke="currentColor"
+                    strokeWidth="3"
+                  />
+                  <path
+                    className="opacity-90"
+                    d="M22 12a10 10 0 00-10-10"
+                    stroke="currentColor"
+                    strokeWidth="3"
+                    strokeLinecap="round"
+                  />
+                </svg>
+              ) : (
+                <svg
+                  className="w-6 h-6 text-white"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth={2}
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"
+                  />
+                </svg>
+              )}
+            </button>
+          </div>
+        )}
+        {isChatBotMounted && ChatBotComponent && (
+          <ChatBotComponent initialOpen={shouldOpenChatBot} />
+        )}
       </div>
     </div>
   );

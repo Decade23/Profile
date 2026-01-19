@@ -6,8 +6,12 @@ interface Message {
   content: string;
 }
 
-export default function ChatBot() {
-  const [isOpen, setIsOpen] = useState(false);
+export default function ChatBot({
+  initialOpen = false,
+}: {
+  initialOpen?: boolean;
+}) {
+  const [isOpen, setIsOpen] = useState(initialOpen);
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
