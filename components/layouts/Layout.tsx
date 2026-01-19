@@ -95,16 +95,18 @@ function Header() {
           <div className="flex items-center gap-2">
             <Link
               href="/"
-              className="w-10 h-10 rounded-xl flex items-center justify-center overflow-hidden shadow-lg transition-colors duration-150 active:scale-95 touch-manipulation"
+              className="w-10 h-10 rounded-xl flex items-center justify-center transition-colors duration-150 active:scale-95 touch-manipulation"
               style={{ WebkitTapHighlightColor: "transparent" }}
               aria-label="Back to homepage"
             >
               <Image
-                src="/favicon_df.png"
+                src="/logo_df.webp?v=10"
                 alt="Dedi Fardiyanto Logo"
                 width={40}
                 height={40}
                 priority
+                unoptimized
+                className="drop-shadow-none dark:drop-shadow-[0_0_7px_rgba(14,165,233,0.55)]"
               />
             </Link>
           </div>

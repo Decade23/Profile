@@ -19,9 +19,8 @@ export default function Seo({
       <meta name="description" content={description} />
 
       {/* Favicon Links */}
-      <link rel="icon" href="/favicon.ico" sizes="any" />
-      <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-      <link rel="apple-touch-icon" href="/favicon_df.png" />
+      <link rel="icon" type="image/x-icon" href="/favicon.ico?v=10" />
+      <link rel="apple-touch-icon" href="/favicon_df.png?v=10" />
 
       <link rel="canonical" href={url} />
 
